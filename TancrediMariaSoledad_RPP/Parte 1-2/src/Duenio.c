@@ -55,7 +55,7 @@ int mostrarUnidadDuenio(Duenio unDuenio)
 	if(unDuenio.isEmpty == 1)
 	{
 		ok=0;
-		printf("%-15d %-15s %-15s %-15s\n",unDuenio.id,unDuenio.nombre,unDuenio.apellido,unDuenio.telefono);
+		printf("%-10d|\t %-15s %-15s %-15s\n",unDuenio.id,unDuenio.nombre,unDuenio.apellido,unDuenio.telefono);
 		printf("--------------------------------------------------------------------------\n");
 	}
 	return ok;

@@ -57,13 +57,13 @@ int altaEstadia(EstadiaDiaria* arrayEstadia, int tam, int* id, Perro* arrayPerro
 			}
 
 		}
-
-		if(i != -1 && utn_getNumber(&bufferE.fechaEstadia.dia, "\nIngrese la fecha: \nDia: ","\nError. Reintente."
-			,1, 31, 1) == 0 && utn_getNumber(&bufferE.fechaEstadia.mes, "\nMes: ","\nError. Reintente."
-			, 1, 12,1) == 0 && utn_getNumber(&bufferE.fechaEstadia.anio, "\nAño: ", "\nError. Reintente.", 1990, 2021, 1)  == 0)
+		if(i != -1 && utn_getNumber(&bufferE.fechaEstadia.dia, "INGRESE FECHA\nDia: ","\nError. Reintente."
+			,1, 31, 1) == 0 && utn_getNumber(&bufferE.fechaEstadia.mes,"Mes: ","\nError. Reintente."
+			, 1, 12,1) == 0 && utn_getNumber(&bufferE.fechaEstadia.anio,"Año: ", "\nError. Reintente.", 1990, 2021, 1)  == 0)
 		{
+			cartelMostrarPerros();
 			mostrarListaPerros(arrayPerro, tamP);
-			if(utn_getNumber(&bufferE.idPerro, "\nIngrese el ID del perro:", "\nError.Reingrese.", 7000, 10000, 1) == 0)
+			if(utn_getNumber(&bufferE.idPerro, "\nIngrese PERRO mediante ID:", "\nError.Reingrese.", 7000, 10000, 1) == 0)
 			{
 				if(validIdPerro(arrayPerro, tamP, bufferE.idPerro) == 0)
 				{
@@ -185,18 +185,7 @@ int mostrarUnidadEstadia(EstadiaDiaria unaEstadia, Perro arrayPerro, Duenio arra
 	if(unaEstadia.isEmpty == 1)
 	{
 		ok=0;
-
-
-		printf("%-15d %-15s %-15s %-15s %-15s %d/%d/%d\n",unaEstadia.id,unaEstadia.nombreDuenio,unaEstadia.telefonoContacto,arrayPerro.nombre,arrayPerro.raza,unaEstadia.fechaEstadia.dia,unaEstadia.fechaEstadia.mes,unaEstadia.fechaEstadia.anio);
-		/*printf("\n****DATOS DE LA ESTADIA****");
-		printf("\nID: %d", unaEstadia.id);
-		printf("\nNOMBRE DUEÑO: %s ", unaEstadia.nombreDuenio);
-		printf("\nTELEFONO CONTACTO: %s", unaEstadia.telefonoContacto);
-		printf("\nID PERRO: %d", unaEstadia.idPerro);
-		printf("\nID DUEÑO: %d", unaEstadia.idDuenio);
-		printf("\nFECHA: %d / %d / %d", (unaEstadia).fechaEstadia.dia,
-				(unaEstadia).fechaEstadia.mes, (unaEstadia).fechaEstadia.anio);
-		printf("\n------------------------------");*/
+		printf("%-10d|\t %-15s %-15s %-15s %-15s %d/%d/%d\n",unaEstadia.id,unaEstadia.nombreDuenio,unaEstadia.telefonoContacto,arrayPerro.nombre,arrayPerro.raza,unaEstadia.fechaEstadia.dia,unaEstadia.fechaEstadia.mes,unaEstadia.fechaEstadia.anio);
 	}
 	return ok;
 }
@@ -207,7 +196,7 @@ void mostrarListaEstadias(EstadiaDiaria* arrayEstadias, int tam, Perro* arrayPer
 	int indexPerro;
 	int indexDuenio;
 
-	printf("\n%-15s %-15s %-15s %-15s %-15s %-15s\n\n","ID ESTADIA","NOMBRE DUEÑO","TELEFONO","NOMBRE PERRO","RAZA PERRO","FECHA DE ESTADIA");
+	cartelMostrarEstadia();
 	for(int i =0; i < tam; i++)
 	{
 		//printf("\nmostrar I valor: %d\n", i);
@@ -216,11 +205,12 @@ void mostrarListaEstadias(EstadiaDiaria* arrayEstadias, int tam, Perro* arrayPer
 		indexByIdDuenio(arrayDuenios, tamDuenio, arrayEstadias[i].idDuenio, &indexDuenio);
 		if(mostrarUnidadEstadia(arrayEstadias[i], arrayPerros[indexPerro], arrayDuenios[indexDuenio]) == 0)
 		{
+			printf("------------------------------------------------------------------------------------------------\n");
 			conteoEstadias++;
 		}
 	}
 
-	printf("\n Cantidad de estadias :%d \n", conteoEstadias);
+	printf("\n\t\t\t\t\t\tCantidad de Estadias:%d \n",conteoEstadias);
 }
 
 int darDeBajaEstadia(EstadiaDiaria* arrayEstadia, int tam, Perro* arraPerros, int tamPerro, Duenio* arrayDuenio, int tamDuenio)

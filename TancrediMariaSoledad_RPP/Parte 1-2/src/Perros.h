@@ -36,6 +36,7 @@ int darDeBajaPerrito(Perro* arrayPerritos, int len);
 int validIdPerro(Perro* arrayPerritos, int tam, int id);
 int contadorPerros(Perro* arrayPerro, int len);
 float promedioEdadPerros(Perro* arrayPerros, int len);
+void cartelMostrarPerros();
 
 
 

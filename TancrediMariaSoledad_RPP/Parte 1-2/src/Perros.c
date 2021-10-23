@@ -32,6 +32,14 @@ void inicializarPerro(Perro* array, int tam)
 	}
 }
 
+void cartelMostrarPerros()
+{
+	printf("\n\t\t## LISTADO DE PERROS CON SUS DATOS ##\n");
+	printf("\n%-15s %-15s %-15s %-15s \n","ID ","NOMBRE ","RAZA ","EDAD ");
+	printf("__________________________________________________________________________\n");
+}
+
+
 /**
  * @fn int mostrarUnidadPerro(Perro)
  * @brief muestra los campos de un solo elemento del array
@@ -45,12 +53,8 @@ int mostrarUnidadPerro(Perro unPerro)
 	if(unPerro.isEmpty == 1)
 	{
 		ok=0;
-		printf("\n**Datos del Perro**");
-		printf("\nID: %d", unPerro.id);
-		printf("\nNOMBRE: %s ", unPerro.nombre);
-		printf("\nRAZA: %s", unPerro.raza);
-		printf("\nEDAD: %d", unPerro.edad);
-		printf("\n------------------------------");
+		printf("%-10d|\t %-15s %-15s %-15d\n",unPerro.id,unPerro.nombre,unPerro.raza,unPerro.edad);
+		printf("--------------------------------------------------------------------------\n");
 	}
 	return ok;
 }

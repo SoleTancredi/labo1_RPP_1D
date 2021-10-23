@@ -94,7 +94,7 @@ int main(void)
 			}
 			break;
 		case 4:
-			if(flagReserva == 1 && ordenarEstadia(arrayEstadias, CANT_E) == 0)
+			if(ordenarEstadia(arrayEstadias, CANT_E) == 0)
 			{
 				printf("\nLas estadias se han ordenado correctamente.");
 				mostrarListaEstadias(arrayEstadias,CANT_E, arrayPerros, CANT_P, arrayDuenio, CANT_D);

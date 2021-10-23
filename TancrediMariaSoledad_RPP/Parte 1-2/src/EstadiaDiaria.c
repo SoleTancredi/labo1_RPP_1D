@@ -70,7 +70,12 @@ void inicializarEstadia(EstadiaDiaria* array, int tam)
 
 void cartelMostrarEstadia()
 {
-	printf("\n%-20s %-20s %-20s %-5s    %-20s %-20s\n\n","ID ESTADIA","NOMBRE DUEÑO","TELEFONO DE CONTACTO","NOMBRE PERRO","RAZA PERRO","FECHA DE ESTADIA");
+
+	printf("\n\t\t## LISTADO DE ESTADIAS CON SUS DATOS CORRESPONDIENTES ##");
+	printf("\n________________________________________________________________________________________________\n");
+	printf("\n%-15s %-15s %-15s %-15s %-15s %-15s\n","ID ESTADIA","NOMBRE DUEÑO"," TEL. CONTACTO "," NOMBRE PERRO","RAZA PERRO","FECHA DE INGRESO");
+	printf("________________________________________________________________________________________________\n");
+
 }
 
 /**
