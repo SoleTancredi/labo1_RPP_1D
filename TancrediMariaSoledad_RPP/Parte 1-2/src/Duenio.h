@@ -35,5 +35,6 @@ int menuModificarDuenio(Duenio* arrayDuenio, int len, int* indice, int* option);
 int modificarDuenio(Duenio* arrayDuenio, int len);
 int darDeBajaDuenio(Duenio* arrayDuenio, int len);
 int validIdDuenio(Duenio* arrayDuenio, int tam, int id);
+void cartelMostrarDuenio();
 
 #endif /* DUENIO_H_ */

@@ -42,18 +42,21 @@ void cargarDuenioHarcode(Duenio* arrayDuenio, int* id)
 		}
 }
 
+void cartelMostrarDuenio()
+{
+	printf("\n\t\t## LISTADO DE DUENIOS CON SUS DATOS ##\n");
+	printf("\n%-15s %-15s %-15s %-15s \n","ID ","NOMBRE ","APELLIDO ","TELEFONO DE CONTACTO ");
+	printf("__________________________________________________________________________\n");
+}
+
 int mostrarUnidadDuenio(Duenio unDuenio)
 {
 	int ok=-1;
 	if(unDuenio.isEmpty == 1)
 	{
 		ok=0;
-		printf("\n**Datos del DUEÑO**");
-		printf("\nID: %d", unDuenio.id);
-		printf("\nNOMBRE: %s ",unDuenio.nombre);
-		printf("\nAPELLIDO: %s", unDuenio.apellido);
-		printf("\nTELEFONO: %s", unDuenio.telefono);
-		printf("\n------------------------------");
+		printf("%-15d %-15s %-15s %-15s\n",unDuenio.id,unDuenio.nombre,unDuenio.apellido,unDuenio.telefono);
+		printf("--------------------------------------------------------------------------\n");
 	}
 	return ok;
 }
@@ -71,7 +74,7 @@ void mostrarListaDuenios(Duenio* arrayDuenio, int tam)
 		}
 	}
 
-	printf("\n Cantidad de DUEÑOS :%d \n",conteoDuenios);
+	printf("\n\t\t\t\t\t\tCantidad de Duenios:%d \n",conteoDuenios);
 }
 
 int eliminarDuenio(Duenio* unidadDuenio)

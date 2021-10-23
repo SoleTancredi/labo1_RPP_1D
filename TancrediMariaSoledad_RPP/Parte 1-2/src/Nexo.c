@@ -38,9 +38,10 @@ int altaEstadia(EstadiaDiaria* arrayEstadia, int tam, int* id, Perro* arrayPerro
 	if(arrayEstadia != NULL && id != NULL)
 	{
 		i = findEmptyEstadia(arrayEstadia, tam);
+		cartelMostrarDuenio();
 		mostrarListaDuenios(arrayDuenio, tam);
 		//pregunto por el cliente de la estadia
-		if(utn_getNumber(&bufferE.idDuenio, "\nIngrese el ID del DUEÑO:", "\nError.Reingrese.", 30000, 60000, 1) == 0)
+		if(utn_getNumber(&bufferE.idDuenio, "\nSELECCIONE UN DUENIO MEDIANTE EL ID:  ", "\nError.Reingrese.", 30000, 60000, 1) == 0)
 		{
 			if(validIdDuenio(arrayDuenio, tamD, bufferE.idDuenio) == 0)
 			{

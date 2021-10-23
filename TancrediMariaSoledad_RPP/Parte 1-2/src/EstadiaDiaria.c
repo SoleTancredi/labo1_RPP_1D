@@ -39,12 +39,11 @@ int menuEstadia()
 			"\n [7] PERRO CON MAS ESTADIAS RESERVADAS."
 			"\n [8] LISTADO DE PERROS CON SUS ESTADIAS DIARIAS RESERVADAS."
 			"\n [9] FINALIZAR.\n"
-			"\n --> INGRESE EL NUMERO CORRESPONDIENTE A LA OPCION DESEADA: "
+			"\n --> INGRESE EL NUMERO CORRESPONDIENTE A LA OPCION DESEADA:  "
 			, "Error. Reingrese la opcion. "
 			, 1, 9, 1) == 0)
 	{
-		printf("Usted ha ingresado la opcion nº %d", option);
-
+		printf("\nUsted ha ingresado la opcion nº %d\n", option);
 	}
 
 return option;
