@@ -31,7 +31,7 @@ int main(void)
 	int idPerro = 7000;
 	int idDuenio = 30000;
 	int id = 100000;
-	int flagReserva = 0;
+	//int flagReserva = 0;
 	int opcion;
 	float promedioEdadPerritos;
 	//no harcodear estadias
@@ -52,10 +52,10 @@ int main(void)
 	cargarDuenioHarcode(arrayDuenio, &idDuenio);
 
 	addEstadia(&arrayEstadias[0], &id, "ABEL", "0221596351203", 7001 ,30000,20,12,2020);
-				addEstadia(&arrayEstadias[1], &id, "Carlos", "1123456789", 7002,31000,02,03,1998);
-				addEstadia(&arrayEstadias[2], &id, "Pedro", "02248429672", 7000,32000,20,12,2020);
-				addEstadia(&arrayEstadias[3], &id, "ZETA", "4545454545", 7001 ,33000,17,12,2020);
-				addEstadia(&arrayEstadias[4], &id, "Ernesto","48425632", 7002, 34000, 02, 03, 1998);
+	addEstadia(&arrayEstadias[1], &id, "Carlos", "1123456789", 7002,31000,02,03,1998);
+	addEstadia(&arrayEstadias[2], &id, "Pedro", "02248429672", 7000,32000,20,12,2020);
+	addEstadia(&arrayEstadias[3], &id, "ZETA", "4545454545", 7001 ,33000,17,12,2020);
+	addEstadia(&arrayEstadias[4], &id, "Ernesto","48425632", 7002, 34000, 02, 03, 1998);
 	do
 	{
 		opcion = menuEstadia();
@@ -66,7 +66,7 @@ int main(void)
 
 			if(altaEstadia(arrayEstadias, CANT_E, &id, arrayPerros, CANT_P, arrayDuenio, CANT_D) == 0)
 			{
-				flagReserva = 1;
+				//flagReserva = 1;
 			}
 			else
 			{
@@ -85,19 +85,19 @@ int main(void)
 			}
 			break;
 		case 3:
-			if(flagReserva == 1 && darDeBajaEstadia(arrayEstadias, CANT_E, arrayPerros, CANT_P, arrayDuenio, CANT_D) == 0)
+			if(darDeBajaEstadia(arrayEstadias, CANT_E, arrayPerros, CANT_P, arrayDuenio, CANT_D) == 0)
 			{
-				printf("\nLa reserva se ha cancelado de manera correcta");
+				printf("\n »»» ESTADIA ELIMINADA «««");
 			}
 			else
 			{
-				printf("\nNo se pudo realizar la cancelacion de la reserva.");
+				printf("\n »» NO SE DIO DE BAJA.");
 			}
 			break;
 		case 4:
 			if(ordenarEstadia(arrayEstadias, CANT_E) == 0)
 			{
-				printf("\nLas estadias se han ordenado correctamente.");
+
 				mostrarListaEstadias(arrayEstadias,CANT_E, arrayPerros, CANT_P, arrayDuenio, CANT_D);
 			}
 			else
@@ -107,21 +107,11 @@ int main(void)
 
 			break;
 		case 5:
-
-
 			mostrarListaPerros(arrayPerros, CANT_P);
-
 			break;
 		case 6:
-			if(flagReserva == 1)
-			{
-				promedioEdadPerritos = promedioEdadPerros(arrayPerros, CANT_P);
-				printf("\nEl promedio de edad de los perros es: %.2f",promedioEdadPerritos);
-			}
-			else
-			{
-				printf("\nAun no se ha reservado la estadia de ningun perrito. ");
-			}
+			promedioEdadPerritos = promedioEdadPerros(arrayPerros, CANT_P);
+			printf("\n »»» PROMEDIO EDAD DE LOS PERROS: [%.2f]",promedioEdadPerritos);
 			break;
 		case 7:
              //falta

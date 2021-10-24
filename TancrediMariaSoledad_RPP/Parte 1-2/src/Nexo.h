@@ -21,5 +21,8 @@ void mostrarListaEstadias(EstadiaDiaria* arrayEstadias, int tam, Perro* arrayPer
 int darDeBajaEstadia(EstadiaDiaria* arrayEstadia, int tam, Perro* arraPerros, int tamPerro, Duenio* arrayDuenio, int tamDuenio);
 void cartelMostrarEstadia();
 void cartelVistaPrevia();
+void cartelEstadiaElegida();
+void cartelPerroIngresado();
+void cartelEstadiaModificada();
 
 #endif /* NEXO_H_ */

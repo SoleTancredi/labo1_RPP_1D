@@ -113,6 +113,8 @@ int modificarEstadia(EstadiaDiaria* arrayEstadia, int tam, Perro* arrayPerritos,
 	int retorno = -1;
 	int option;
 	int indice;
+	int iPerro;
+	int iDuenio;
 	int indicePerro;
 	int indiceDuenio;
 	int bufferId;
@@ -127,7 +129,10 @@ int modificarEstadia(EstadiaDiaria* arrayEstadia, int tam, Perro* arrayPerritos,
 				,"\n × ERROR. REINGRESE EL ID.\n",100000,150000, 1) == 0 &&
 		findByIdEstadia(arrayEstadia, tam, bufferId,&indice) == 0)
 		{
-			//mostrar estadia elegida
+			indexByIdPerro(arrayPerritos, tamPerro, arrayEstadia[indice].idPerro, &iPerro);
+			indexByIdDuenio(arrayDuenio, tamDuenio, arrayEstadia[indice].idDuenio, &iDuenio);
+			cartelEstadiaElegida();
+			mostrarUnidadEstadia(arrayEstadia[indice], arrayPerritos[iPerro], arrayDuenio[iDuenio]);
 			do
 			{
 				if(subMenuModifEstadia(arrayEstadia, tam,&option) == 0)
@@ -158,10 +163,10 @@ int modificarEstadia(EstadiaDiaria* arrayEstadia, int tam, Perro* arrayPerritos,
 					case 2:
 						mostrarListaPerros(arrayPerritos, tam);
 						if(utn_getNumber(&bufferE.idPerro, "\n --> Ingrese nuevo Id de perro. \n"
-						, "\n × Error. Reingrese el id.", 7000, 10000, 1) == 0
+						, "\n × Error. Reingrese id valido.", 7000, 10000, 1) == 0
 						&& indexByIdPerro(arrayPerritos, tam, bufferE.idPerro, &indicePerro) == 0)
 						{
-							printf("\n » Nuevo perro ingresado : \n");
+							cartelPerroIngresado();
 							mostrarUnidadPerro(arrayPerritos[indicePerro]);
 							if(utn_getNumber(&rta2,"\n » CONFIRMAR MODIFICACION ? "
 		                    		"\n  [1] SI "
@@ -178,6 +183,7 @@ int modificarEstadia(EstadiaDiaria* arrayEstadia, int tam, Perro* arrayPerritos,
 						if(rta1 == 1 || rta2 == 1)
 						{   // cambios realizados :
 							indexByIdDuenio(arrayDuenio, tamDuenio,arrayEstadia[indice].idDuenio, &indiceDuenio);
+							cartelEstadiaModificada();
 							mostrarUnidadEstadia(arrayEstadia[indice], arrayPerritos[indicePerro], arrayDuenio[indiceDuenio]);
 							printf("\n »»» Saliendo al menu principal");
 							//system pause
@@ -263,6 +269,9 @@ int darDeBajaEstadia(EstadiaDiaria* arrayEstadia, int tam, Perro* arraPerros, in
 	int retorno = -1;
 	int id;
 	int indice;
+	int indicePerro;
+	int indiceDuenio;
+	int rta;
 
 	if(arrayEstadia!= NULL)
 	{
@@ -270,14 +279,24 @@ int darDeBajaEstadia(EstadiaDiaria* arrayEstadia, int tam, Perro* arraPerros, in
 
 		mostrarListaEstadias(arrayEstadia, tam, arraPerros, tamPerro, arrayDuenio, tamDuenio);
 
-		if( utn_getNumber(&id, "\nIngrese el ID de la ESTADIA que desea cancelar: ","\nError. Reingrese el ID."
+		if( utn_getNumber(&id, "\n --> SELECCIONE UNA ESTADIA MEDIANTE ID : ","\n × ERROR. REINGRESE EL ID."
 					, 100000, 150000, 1) == 0 && findByIdEstadia(arrayEstadia, tam, id, &indice) == 0)
 
 		{
-			if(eliminarEstadia(&arrayEstadia[indice]) == 0)
+			indexByIdPerro(arraPerros, tamPerro, arrayEstadia[indice].idPerro,&indicePerro);
+			indexByIdDuenio(arrayDuenio, tamDuenio, arrayEstadia[indice].idDuenio, &indiceDuenio);
+			cartelEstadiaElegida();
+			mostrarUnidadEstadia(arrayEstadia[indice], arraPerros[indicePerro], arrayDuenio[indiceDuenio]);
+			if(utn_getNumber(&rta,"\n » CONFIRMAR BAJA ? "
+            		"\n  [1] SI "
+            		"\n  [2] NO ", "\n × Error.\n",1,2, 1) == 0)
 			{
-				retorno = 0;
+				if(rta == 1 && eliminarEstadia(&arrayEstadia[indice]) == 0)
+				{
+					retorno = 0;
+				}
 			}
+
 		}
 	}
 	return retorno;
@@ -302,3 +321,28 @@ void cartelVistaPrevia()
 	printf("________________________________________________________________________________________________\n");
 
 }
+
+void cartelEstadiaElegida()
+{
+	printf("\n\n\t\t\t\t## ESTADIA ELEGIDA ##");
+	printf("\n________________________________________________________________________________________________\n");
+	printf("\n%-15s %-15s %-15s %-15s %-15s %-15s\n","ID ESTADIA","NOMBRE DUEÑO"," TEL. CONTACTO "," NOMBRE PERRO","RAZA PERRO","FECHA DE INGRESO");
+	printf("________________________________________________________________________________________________\n");
+}
+
+void cartelEstadiaModificada()
+{
+	printf("\n\n\t\t\t\t## ESTADIA MODIFICADA ##");
+	printf("\n________________________________________________________________________________________________\n");
+	printf("\n%-15s %-15s %-15s %-15s %-15s %-15s\n","ID ESTADIA","NOMBRE DUEÑO"," TEL. CONTACTO "," NOMBRE PERRO","RAZA PERRO","FECHA DE INGRESO");
+	printf("________________________________________________________________________________________________\n");
+}
+
+void cartelPerroIngresado()
+{
+	printf("\n\t\t## NUEVO PERRO ELEGIDO ##");
+	printf("\n__________________________________________________________\n");
+	printf("\n%-15s %-15s %-15s %-15s \n","ID PERRO ","NOMBRE ","RAZA ","EDAD ");
+	printf("__________________________________________________________\n");
+}
+
