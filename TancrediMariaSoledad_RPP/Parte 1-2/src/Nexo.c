@@ -33,6 +33,8 @@ int altaEstadia(EstadiaDiaria* arrayEstadia, int tam, int* id, Perro* arrayPerro
 	int retorno = -1;
 	int i;
 	int iDuenio;
+	int iPerro;
+	int rtaSeguir;
 	EstadiaDiaria bufferE;
 
 	if(arrayEstadia != NULL && id != NULL)
@@ -41,7 +43,7 @@ int altaEstadia(EstadiaDiaria* arrayEstadia, int tam, int* id, Perro* arrayPerro
 		cartelMostrarDuenio();
 		mostrarListaDuenios(arrayDuenio, tam);
 		//pregunto por el cliente de la estadia
-		if(utn_getNumber(&bufferE.idDuenio, "\nSELECCIONE UN DUENIO MEDIANTE EL ID:  ", "\nError.Reingrese.", 30000, 60000, 1) == 0)
+		if(utn_getNumber(&bufferE.idDuenio, "\n --> SELECCIONE UN DUENIO MEDIANTE ID:  ", "\nError.Reingrese.", 30000, 60000, 1) == 0)
 		{
 			if(validIdDuenio(arrayDuenio, tamD, bufferE.idDuenio) == 0)
 			{
@@ -61,18 +63,27 @@ int altaEstadia(EstadiaDiaria* arrayEstadia, int tam, int* id, Perro* arrayPerro
 			,1, 31, 1) == 0 && utn_getNumber(&bufferE.fechaEstadia.mes,"Mes: ","\nError. Reintente."
 			, 1, 12,1) == 0 && utn_getNumber(&bufferE.fechaEstadia.anio,"Año: ", "\nError. Reintente.", 1990, 2021, 1)  == 0)
 		{
-			cartelMostrarPerros();
 			mostrarListaPerros(arrayPerro, tamP);
-			if(utn_getNumber(&bufferE.idPerro, "\nIngrese PERRO mediante ID:", "\nError.Reingrese.", 7000, 10000, 1) == 0)
+			if(utn_getNumber(&bufferE.idPerro, "\n --> SELECCIONE UN PERRO MEDIANTE ID: ", "\nError.Reingrese.", 7000, 10000, 1) == 0)
 			{
-				if(validIdPerro(arrayPerro, tamP, bufferE.idPerro) == 0)
+				if(indexByIdPerro(arrayPerro, tamP,bufferE.idPerro, &iPerro) == 0)
 				{
-					if(addEstadia(&arrayEstadia[i], id,bufferE.nombreDuenio ,bufferE.telefonoContacto , bufferE.idPerro,bufferE.idDuenio, bufferE.fechaEstadia.dia, bufferE.fechaEstadia.mes, bufferE.fechaEstadia.anio) == 0)
-					{
-						printf("perfecto");
-						retorno = 0;
-					}
-
+				    bufferE.id = *id;
+                    cartelMostrarEstadia();
+                    mostrarUnidadEstadia(bufferE,arrayPerro[iPerro], arrayDuenio[iDuenio]);
+                    if(utn_getNumber(&rtaSeguir,"\nDesea cargar los datos ?"
+                    		"\n[1] SI"
+                    		"\n[2] NO", "\nError.",1,2, 1) == 0)
+                    {
+                    	if(rtaSeguir == 1)
+                    	{
+                    		if(addEstadia(&arrayEstadia[i], id,bufferE.nombreDuenio ,bufferE.telefonoContacto , bufferE.idPerro,bufferE.idDuenio, bufferE.fechaEstadia.dia, bufferE.fechaEstadia.mes, bufferE.fechaEstadia.anio) == 0)
+							{
+								printf("\nCARGA COMPLETA.");
+								retorno = 0;
+							}
+                    	}
+                    }
 				}
 				else
 				{
@@ -185,7 +196,7 @@ int mostrarUnidadEstadia(EstadiaDiaria unaEstadia, Perro arrayPerro, Duenio arra
 	if(unaEstadia.isEmpty == 1)
 	{
 		ok=0;
-		printf("%-10d|\t %-15s %-15s %-15s %-15s %d/%d/%d\n",unaEstadia.id,unaEstadia.nombreDuenio,unaEstadia.telefonoContacto,arrayPerro.nombre,arrayPerro.raza,unaEstadia.fechaEstadia.dia,unaEstadia.fechaEstadia.mes,unaEstadia.fechaEstadia.anio);
+		printf("   %-10d|   %-15s%-15s %-15s %-14s  %d/%d/%d\n",unaEstadia.id,unaEstadia.nombreDuenio,unaEstadia.telefonoContacto,arrayPerro.nombre,arrayPerro.raza,unaEstadia.fechaEstadia.dia,unaEstadia.fechaEstadia.mes,unaEstadia.fechaEstadia.anio);
 	}
 	return ok;
 }
@@ -210,7 +221,7 @@ void mostrarListaEstadias(EstadiaDiaria* arrayEstadias, int tam, Perro* arrayPer
 		}
 	}
 
-	printf("\n\t\t\t\t\t\tCantidad de Estadias:%d \n",conteoEstadias);
+	printf("\n\t\t\t\t\t\t\t\t\tCantidad de Estadias:%d \n",conteoEstadias);
 }
 
 int darDeBajaEstadia(EstadiaDiaria* arrayEstadia, int tam, Perro* arraPerros, int tamPerro, Duenio* arrayDuenio, int tamDuenio)

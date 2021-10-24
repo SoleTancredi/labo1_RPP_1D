@@ -44,8 +44,9 @@ void cargarDuenioHarcode(Duenio* arrayDuenio, int* id)
 
 void cartelMostrarDuenio()
 {
-	printf("\n\t\t## LISTADO DE DUENIOS CON SUS DATOS ##\n");
-	printf("\n%-15s %-15s %-15s %-15s \n","ID ","NOMBRE ","APELLIDO ","TELEFONO DE CONTACTO ");
+	printf("\n\t\t\t## LISTADO DE DUENIOS ##");
+	printf("\n__________________________________________________________________________\n");
+	printf("\n%-15s %-15s %-15s %-15s \n","ID DUENIO","NOMBRE ","APELLIDO ","TELEFONO DE CONTACTO ");
 	printf("__________________________________________________________________________\n");
 }
 
@@ -55,7 +56,7 @@ int mostrarUnidadDuenio(Duenio unDuenio)
 	if(unDuenio.isEmpty == 1)
 	{
 		ok=0;
-		printf("%-10d|\t %-15s %-15s %-15s\n",unDuenio.id,unDuenio.nombre,unDuenio.apellido,unDuenio.telefono);
+		printf("   %-10d|   %-15s %-15s %-15s\n",unDuenio.id,unDuenio.nombre,unDuenio.apellido,unDuenio.telefono);
 		printf("--------------------------------------------------------------------------\n");
 	}
 	return ok;

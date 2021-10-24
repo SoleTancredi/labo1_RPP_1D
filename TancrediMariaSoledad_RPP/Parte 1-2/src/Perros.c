@@ -34,11 +34,11 @@ void inicializarPerro(Perro* array, int tam)
 
 void cartelMostrarPerros()
 {
-	printf("\n\t\t## LISTADO DE PERROS CON SUS DATOS ##\n");
-	printf("\n%-15s %-15s %-15s %-15s \n","ID ","NOMBRE ","RAZA ","EDAD ");
-	printf("__________________________________________________________________________\n");
+	printf("\n\t\t## LISTADO DE PERROS ##");
+	printf("\n__________________________________________________________\n");
+	printf("\n%-15s %-15s %-15s %-15s \n","ID PERRO ","NOMBRE ","RAZA ","EDAD ");
+	printf("__________________________________________________________\n");
 }
-
 
 /**
  * @fn int mostrarUnidadPerro(Perro)
@@ -53,8 +53,8 @@ int mostrarUnidadPerro(Perro unPerro)
 	if(unPerro.isEmpty == 1)
 	{
 		ok=0;
-		printf("%-10d|\t %-15s %-15s %-15d\n",unPerro.id,unPerro.nombre,unPerro.raza,unPerro.edad);
-		printf("--------------------------------------------------------------------------\n");
+		printf("  %-6d|\t %-15s%-15s %-15d\n",unPerro.id,unPerro.nombre,unPerro.raza,unPerro.edad);
+		printf("----------------------------------------------------------\n");
 	}
 	return ok;
 }
@@ -69,6 +69,7 @@ int mostrarUnidadPerro(Perro unPerro)
 void mostrarListaPerros(Perro* arrayPerros, int tam)
 {
 	int conteoPerros=0;
+	cartelMostrarPerros();
 	for(int i =0; i < tam; i++)
 	{
 		//printf("\nmostrar I valor: %d\n", i);
@@ -78,7 +79,7 @@ void mostrarListaPerros(Perro* arrayPerros, int tam)
 		}
 	}
 
-	printf("\n Cantidad de perros :%d \n",conteoPerros );
+	printf("\n\t\t\t\t Cantidad de perros :%d \n",conteoPerros );
 }
 
 /**

@@ -26,9 +26,9 @@ int menuEstadia()
 {
 	int option;
 
-	printf("\n    		 *****GUARDERIA DE PERRITOS*****\n\n");
+	printf("\n\t\t*****GUARDERIA DE PERRITOS*****\n\n");
 
-	if(utn_getNumber(&option, "     		      ** MENU PRINCIPAL **"
+	if(utn_getNumber(&option, "\t\t     ** MENU PRINCIPAL **"
 			"  \n"
 			"\n [1] RESERVAR ESTADIA. "
 			"\n [2] MODIFICAR ESTADIA. "
@@ -39,7 +39,7 @@ int menuEstadia()
 			"\n [7] PERRO CON MAS ESTADIAS RESERVADAS."
 			"\n [8] LISTADO DE PERROS CON SUS ESTADIAS DIARIAS RESERVADAS."
 			"\n [9] FINALIZAR.\n"
-			"\n --> INGRESE EL NUMERO CORRESPONDIENTE A LA OPCION DESEADA:  "
+			"\n --> INGRESE UNA OPCION DE LA LISTA:  "
 			, "Error. Reingrese la opcion. "
 			, 1, 9, 1) == 0)
 	{
@@ -71,7 +71,7 @@ void inicializarEstadia(EstadiaDiaria* array, int tam)
 void cartelMostrarEstadia()
 {
 
-	printf("\n\t\t## LISTADO DE ESTADIAS CON SUS DATOS CORRESPONDIENTES ##");
+	printf("\n\t\t\t\t## LISTADO DE ESTADIAS ##");
 	printf("\n________________________________________________________________________________________________\n");
 	printf("\n%-15s %-15s %-15s %-15s %-15s %-15s\n","ID ESTADIA","NOMBRE DUEÑO"," TEL. CONTACTO "," NOMBRE PERRO","RAZA PERRO","FECHA DE INGRESO");
 	printf("________________________________________________________________________________________________\n");

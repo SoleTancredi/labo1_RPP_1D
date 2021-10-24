@@ -50,12 +50,12 @@ int main(void)
 	inicializarDuenio(arrayDuenio, CANT_D);
 	cargarPerrosHarcode(arrayPerros, &idPerro);
 	cargarDuenioHarcode(arrayDuenio, &idDuenio);
-	addEstadia(&arrayEstadias[0], &id, "ABEL", "0221596351203", 7001 ,30000,20,12,2020);
-	addEstadia(&arrayEstadias[1], &id, "Carlos", "1123456789", 7002,31000,02,03,1998);
-	addEstadia(&arrayEstadias[2], &id, "Pedro", "02248429672", 7000,32000,20,12,2020);
-	addEstadia(&arrayEstadias[3], &id, "ZETA", "4545454545", 7001 ,33000,17,12,2020);
-	addEstadia(&arrayEstadias[4], &id, "Ernesto","48425632", 7002, 34000, 02, 03, 1998);
 
+	addEstadia(&arrayEstadias[0], &id, "ABEL", "0221596351203", 7001 ,30000,20,12,2020);
+				addEstadia(&arrayEstadias[1], &id, "Carlos", "1123456789", 7002,31000,02,03,1998);
+				addEstadia(&arrayEstadias[2], &id, "Pedro", "02248429672", 7000,32000,20,12,2020);
+				addEstadia(&arrayEstadias[3], &id, "ZETA", "4545454545", 7001 ,33000,17,12,2020);
+				addEstadia(&arrayEstadias[4], &id, "Ernesto","48425632", 7002, 34000, 02, 03, 1998);
 	do
 	{
 		opcion = menuEstadia();
@@ -63,6 +63,7 @@ int main(void)
 		switch(opcion)
 		{
 		case 1:
+
 			if(altaEstadia(arrayEstadias, CANT_E, &id, arrayPerros, CANT_P, arrayDuenio, CANT_D) == 0)
 			{
 				flagReserva = 1;
@@ -106,6 +107,7 @@ int main(void)
 
 			break;
 		case 5:
+
 
 			mostrarListaPerros(arrayPerros, CANT_P);
 
