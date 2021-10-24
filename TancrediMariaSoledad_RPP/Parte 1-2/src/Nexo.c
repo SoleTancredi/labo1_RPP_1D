@@ -79,7 +79,7 @@ int altaEstadia(EstadiaDiaria* arrayEstadia, int tam, int* id, Perro* arrayPerro
                     	{
                     		if(addEstadia(&arrayEstadia[i], id,bufferE.nombreDuenio ,bufferE.telefonoContacto , bufferE.idPerro,bufferE.idDuenio, bufferE.fechaEstadia.dia, bufferE.fechaEstadia.mes, bufferE.fechaEstadia.anio) == 0)
 							{
-								printf("\nCARGA COMPLETA.");
+								printf("\n »»» CARGA COMPLETA «««");
 								retorno = 0;
 							}
                     	}
@@ -113,47 +113,81 @@ int modificarEstadia(EstadiaDiaria* arrayEstadia, int tam, Perro* arrayPerritos,
 	int retorno = -1;
 	int option;
 	int indice;
+	int indicePerro;
+	int indiceDuenio;
 	int bufferId;
+	int rta1;
+	int rta2;
 	EstadiaDiaria bufferE;
 
 	if(arrayEstadia != NULL )
 	{
 		mostrarListaEstadias(arrayEstadia, tam, arrayPerritos, tamPerro, arrayDuenio, tamDuenio);
-		if(utn_getNumber(&bufferId, "\nIngrese el ID de la ESTADIA que desea modificar:  "
-				,"\nError. Reingrese.",100000,150000, 1) == 0 &&
+		if(utn_getNumber(&bufferId, "\n --> SELECCIONE UNA ESTADIA MEDIANTE ID:  "
+				,"\n × ERROR. REINGRESE EL ID.\n",100000,150000, 1) == 0 &&
 		findByIdEstadia(arrayEstadia, tam, bufferId,&indice) == 0)
 		{
+			//mostrar estadia elegida
 			do
 			{
 				if(subMenuModifEstadia(arrayEstadia, tam,&option) == 0)
-			{
-				switch(option)
+				{
+					switch(option)
 				{
 					case 1:
-						if(utn_telephoneNumber(bufferE.telefonoContacto,"\nIngrese el nuevo telefono de contacto:"
-								,"\nError. Reingrese el numero.", tam, 1) == 0)
+						printf("\n >> El numero actual es: [%s]\n", arrayEstadia[indice].telefonoContacto);
+						if(utn_telephoneNumber(bufferE.telefonoContacto,"\n -> Ingrese nuevo telefono: \n"
+								,"\n × Error. Reingrese el numero.", TAM_TEL, 1) == 0)
 						{
-							printf("\nEl telefono de contacto ingresado es: %s", bufferE.telefonoContacto);
-							strcpy(arrayEstadia[indice].telefonoContacto, bufferE.telefonoContacto);
+							printf("\n » Nuevo telefono ingresado: [%s]\n", bufferE.telefonoContacto);
+							if(utn_getNumber(&rta1,"\n » CONFIRMAR MODIFICACION ? "
+		                    		"\n  [1] SI "
+		                    		"\n  [2] NO ", "\n × Error.\n",1,2, 1) == 0)
+							{
+								if(rta1 == 1)
+								{
+									strcpy(arrayEstadia[indice].telefonoContacto, bufferE.telefonoContacto);
+								}
+							}
 						}
 						else
 						{
-							printf("\nNo se ha podido realizar la modificacion de manera correcta");
+							printf("\n »» NO SE REALIZO LA MODIFICACION.");
 						}
 						break;
 					case 2:
 						mostrarListaPerros(arrayPerritos, tam);
-						if(utn_getNumber(&bufferE.idPerro, "\nIngrese el nuevo Id del perro."
-						, "\nError. Reingrese el id.", 7000, 10000, 1) == 0
-						&& validIdPerro(arrayPerritos, tam, bufferE.idPerro) == 0
-						)
+						if(utn_getNumber(&bufferE.idPerro, "\n --> Ingrese nuevo Id de perro. \n"
+						, "\n × Error. Reingrese el id.", 7000, 10000, 1) == 0
+						&& indexByIdPerro(arrayPerritos, tam, bufferE.idPerro, &indicePerro) == 0)
 						{
-							printf("\nEl ID ingreado es: %d",bufferE.idPerro);
-							arrayEstadia[indice].idPerro = bufferE.idPerro;
+							printf("\n » Nuevo perro ingresado : \n");
+							mostrarUnidadPerro(arrayPerritos[indicePerro]);
+							if(utn_getNumber(&rta2,"\n » CONFIRMAR MODIFICACION ? "
+		                    		"\n  [1] SI "
+		                    		"\n  [2] NO ", "\n × Error.\n",1,2, 1) == 0)
+							{
+								if(rta2 == 1)
+								{
+									arrayEstadia[indice].idPerro = bufferE.idPerro;
+								}
+							}
 						}
 						break;
 					case 3:
-						printf(" Salir de modificaciones.");
+						if(rta1 == 1 || rta2 == 1)
+						{   // cambios realizados :
+							indexByIdDuenio(arrayDuenio, tamDuenio,arrayEstadia[indice].idDuenio, &indiceDuenio);
+							mostrarUnidadEstadia(arrayEstadia[indice], arrayPerritos[indicePerro], arrayDuenio[indiceDuenio]);
+							printf("\n »»» Saliendo al menu principal");
+							//system pause
+						}
+						else
+						{
+							printf("\n »» NO HUBO CAMBIOS.\n");
+							printf("\n »»» Saliendo al menu principal");
+							// no hubo modificaciones,saliendo al menu principal...
+						}
 						break;
 				}
 				retorno = 0;
@@ -249,3 +283,22 @@ int darDeBajaEstadia(EstadiaDiaria* arrayEstadia, int tam, Perro* arraPerros, in
 	return retorno;
 }
 
+void cartelMostrarEstadia()
+{
+
+	printf("\n\t\t\t\t## LISTADO DE ESTADIAS ##");
+	printf("\n________________________________________________________________________________________________\n");
+	printf("\n%-15s %-15s %-15s %-15s %-15s %-15s\n","ID ESTADIA","NOMBRE DUEÑO"," TEL. CONTACTO "," NOMBRE PERRO","RAZA PERRO","FECHA DE INGRESO");
+	printf("________________________________________________________________________________________________\n");
+
+}
+
+void cartelVistaPrevia()
+{
+
+	printf("\n\n\t\t\t\t## VISTA PREVIA DE ESTADIA ##");
+	printf("\n________________________________________________________________________________________________\n");
+	printf("\n%-15s %-15s %-15s %-15s %-15s %-15s\n","ID ESTADIA","NOMBRE DUEÑO"," TEL. CONTACTO "," NOMBRE PERRO","RAZA PERRO","FECHA DE INGRESO");
+	printf("________________________________________________________________________________________________\n");
+
+}

@@ -40,10 +40,10 @@ int menuEstadia()
 			"\n [8] LISTADO DE PERROS CON SUS ESTADIAS DIARIAS RESERVADAS."
 			"\n [9] FINALIZAR.\n"
 			"\n --> INGRESE UNA OPCION DE LA LISTA:  "
-			, "Error. Reingrese la opcion. "
+			, " × ERROR. REINGRESE LA OPCION.\n"
 			, 1, 9, 1) == 0)
 	{
-		printf("\nUsted ha ingresado la opcion nº %d\n", option);
+		printf("\n »» Usted ha ingresado la opcion nº %d\n", option);
 	}
 
 return option;
@@ -68,25 +68,7 @@ void inicializarEstadia(EstadiaDiaria* array, int tam)
 }
 
 
-void cartelMostrarEstadia()
-{
 
-	printf("\n\t\t\t\t## LISTADO DE ESTADIAS ##");
-	printf("\n________________________________________________________________________________________________\n");
-	printf("\n%-15s %-15s %-15s %-15s %-15s %-15s\n","ID ESTADIA","NOMBRE DUEÑO"," TEL. CONTACTO "," NOMBRE PERRO","RAZA PERRO","FECHA DE INGRESO");
-	printf("________________________________________________________________________________________________\n");
-
-}
-
-void cartelVistaPrevia()
-{
-
-	printf("\n\n\t\t\t\t## VISTA PREVIA DE ESTADIA ##");
-	printf("\n________________________________________________________________________________________________\n");
-	printf("\n%-15s %-15s %-15s %-15s %-15s %-15s\n","ID ESTADIA","NOMBRE DUEÑO"," TEL. CONTACTO "," NOMBRE PERRO","RAZA PERRO","FECHA DE INGRESO");
-	printf("________________________________________________________________________________________________\n");
-
-}
 
 /**
  * @fn void mostrarListaEstadias(EstadiaDiaria*, int)
@@ -223,15 +205,14 @@ int subMenuModifEstadia(EstadiaDiaria* arrayEstadia, int tam,int* option)
 	int retorno = -1;
 	if(arrayEstadia != NULL)
 	{
-		printf("\n########## MODIFICAR DATOS ##########\n");
+		printf("\n\t*** MODIFICAR DATOS ***\n");
 
-		if(utn_getNumber(option, "\nIngrese la opcion del dato que desea modificar:"
-						"\n1. TELEFONO DE CONTACTO."
-						"\n2. PERRO segun su Identificador."
-						"\n3. SALIR. "
-						, "Error. Reingrese la opcion", 1, 3, 1) == 0)
+		if(utn_getNumber(option,"\n [1] TELEFONO DE CONTACTO."
+						"\n [2] PERRO."
+						"\n [3] MOSTRAR CAMBIOS REALIZADOS Y SALIR AL MENU PRINCIPAL."
+						"\n --> INGRESE UNA OPCION:  \n"
+						, " × ERROR. REINGRESE LA OPCION.\n", 1, 3, 1) == 0)
 		{
-			printf("\nUsted ha ingresado la opcion nº %d", *option);
 			retorno = 0;
 		}
 

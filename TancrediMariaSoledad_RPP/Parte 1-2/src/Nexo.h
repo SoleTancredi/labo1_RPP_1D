@@ -19,5 +19,7 @@ int estadia_listarEstadiasConPerros(EstadiaDiaria* estadia,int tamEstadia,Perro*
 int mostrarUnidadEstadia(EstadiaDiaria unaEstadia, Perro arrayPerro, Duenio arrayDuenio);
 void mostrarListaEstadias(EstadiaDiaria* arrayEstadias, int tam, Perro* arrayPerros, int tamPerro, Duenio* arrayDuenios, int tamDuenio);
 int darDeBajaEstadia(EstadiaDiaria* arrayEstadia, int tam, Perro* arraPerros, int tamPerro, Duenio* arrayDuenio, int tamDuenio);
+void cartelMostrarEstadia();
+void cartelVistaPrevia();
 
 #endif /* NEXO_H_ */

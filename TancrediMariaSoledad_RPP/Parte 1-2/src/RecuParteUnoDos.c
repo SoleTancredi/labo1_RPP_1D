@@ -70,18 +70,18 @@ int main(void)
 			}
 			else
 			{
-				printf("\n »» NO SE PUDO REALIZAR LA RESERVA.");
+				printf("\n »» NO SE REALIZO LA RESERVA.");
 			}
 			break;
 		case 2:
-			if(flagReserva == 1 && modificarEstadia(arrayEstadias, CANT_E, arrayPerros,CANT_P, arrayDuenio, CANT_D) == 0)
+			if( modificarEstadia(arrayEstadias, CANT_E, arrayPerros,CANT_P, arrayDuenio, CANT_D) == 0)
 			{
-				printf("\n//Los datos han sido modificados de manera exitosa.//");
-				mostrarListaEstadias(arrayEstadias, CANT_E, arrayPerros, CANT_P, arrayDuenio, CANT_D);
+				//errorprintf("\n ");
+				//mostrarListaEstadias(arrayEstadias, CANT_E, arrayPerros, CANT_P, arrayDuenio, CANT_D);
 			}
 			else
 			{
-				printf("\nNo se pudo realizar la modificacion de datos.");
+				printf("\n »» NO SE PUDO REALIZAR LA MODIFICACION. NO EXISTE NINGUNA RESERVA TODAVIA.");
 			}
 			break;
 		case 3:
