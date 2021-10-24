@@ -16,6 +16,7 @@
 #include "EstadiaDiaria.h"
 #include "Perros.h"
 #include "Duenio.h"
+#include "Fecha.h"
 
 /**
  * @fn int altaEstadia(EstadiaDiaria*, int, int*, Perro*, int)
@@ -42,26 +43,19 @@ int altaEstadia(EstadiaDiaria* arrayEstadia, int tam, int* id, Perro* arrayPerro
 		i = findEmptyEstadia(arrayEstadia, tam);
 		cartelMostrarDuenio();
 		mostrarListaDuenios(arrayDuenio, tam);
-		//pregunto por el cliente de la estadia
 		if(utn_getNumber(&bufferE.idDuenio, "\n --> SELECCIONE UN DUENIO MEDIANTE ID:  ", "\nError.Reingrese.", 30000, 60000, 1) == 0)
 		{
-			if(validIdDuenio(arrayDuenio, tamD, bufferE.idDuenio) == 0)
+			if(indexByIdDuenio(arrayDuenio, tamD, bufferE.idDuenio,&iDuenio) == 0)
 			{
-				if(indexByIdDuenio(arrayDuenio, tamD, bufferE.idDuenio,&iDuenio) == 0)
-				{
-					strcpy(bufferE.nombreDuenio, arrayDuenio[iDuenio].nombre);
-					strcpy(bufferE.telefonoContacto, arrayDuenio[iDuenio].telefono);
-				}
+				strcpy(bufferE.nombreDuenio,arrayDuenio[iDuenio].nombre);
+				strcpy(bufferE.telefonoContacto,arrayDuenio[iDuenio].telefono);
 			}
 			else
 			{
 				printf("\nEl ID ingresado no existe.");
 			}
-
 		}
-		if(i != -1 && utn_getNumber(&bufferE.fechaEstadia.dia, "INGRESE FECHA\nDia: ","\nError. Reintente."
-			,1, 31, 1) == 0 && utn_getNumber(&bufferE.fechaEstadia.mes,"Mes: ","\nError. Reintente."
-			, 1, 12,1) == 0 && utn_getNumber(&bufferE.fechaEstadia.anio,"Año: ", "\nError. Reintente.", 1990, 2021, 1)  == 0)
+		if(i != -1 && cargarFecha(&bufferE.fechaEstadia) == 0 )
 		{
 			mostrarListaPerros(arrayPerro, tamP);
 			if(utn_getNumber(&bufferE.idPerro, "\n --> SELECCIONE UN PERRO MEDIANTE ID: ", "\nError.Reingrese.", 7000, 10000, 1) == 0)

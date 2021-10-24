@@ -5,4 +5,31 @@
  *      Author: sole
  */
 
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <ctype.h>
+#include <stdio_ext.h>
+#include "BibliotecaUtn2021.h"
+#include "Fecha.h"
+
+int cargarFecha(Fecha* fecha)
+{
+	int retorno = -1;
+	Fecha bufferF;
+
+	printf("\n --> INGRESE LA FECHA DE INGRESO.");
+	if(utn_getNumber(&bufferF.dia, "\n >> DIA : ", "\n × ERROR. REINGRESE EL DIA.", 1, 31, 1) == 0)
+	{
+		if(utn_getNumber(&bufferF.mes,"\n >> MES : ", "\n × ERROR. REINGRESE EL MES.", 1, 12, 1) == 0)
+		{
+			if(utn_getNumber(&bufferF.anio,"\n >> ANIO : ", "\n × ERROR. REINGRESE EL ANIO.", 1995, 2055, 1) == 0)
+			{
+				*fecha = bufferF;
+				retorno = 0;
+			}
+		}
+	}
+	return retorno;
+}
 

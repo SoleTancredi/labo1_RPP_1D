@@ -9,14 +9,7 @@
 #define ESTADIADIARIA_H_
 #define TAM_NOMBRE 20
 #define TAM_TEL 15
-
-struct
-{
-	int dia;
-	int mes;
-	int anio;
-
-}typedef Fecha;
+#include "Fecha.h"
 
 struct
 {

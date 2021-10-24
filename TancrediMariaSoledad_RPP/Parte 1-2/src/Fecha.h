@@ -8,6 +8,15 @@
 #ifndef FECHA_H_
 #define FECHA_H_
 
+struct
+{
+	int dia;
+	int mes;
+	int anio;
+
+}typedef Fecha;
+
+int cargarFecha(Fecha* fecha);
 
 
 #endif /* FECHA_H_ */
