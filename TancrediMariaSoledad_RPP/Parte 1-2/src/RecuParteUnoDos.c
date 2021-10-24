@@ -70,7 +70,7 @@ int main(void)
 			}
 			else
 			{
-				printf("\nNo se pudo realizar la reserva.");
+				printf("\n »» NO SE PUDO REALIZAR LA RESERVA.");
 			}
 			break;
 		case 2:

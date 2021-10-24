@@ -26,7 +26,7 @@ int menuEstadia()
 {
 	int option;
 
-	printf("\n\t\t*****GUARDERIA DE PERRITOS*****\n\n");
+	printf("\n\n\t\t*****GUARDERIA DE PERRITOS*****\n\n");
 
 	if(utn_getNumber(&option, "\t\t     ** MENU PRINCIPAL **"
 			"  \n"
@@ -72,6 +72,16 @@ void cartelMostrarEstadia()
 {
 
 	printf("\n\t\t\t\t## LISTADO DE ESTADIAS ##");
+	printf("\n________________________________________________________________________________________________\n");
+	printf("\n%-15s %-15s %-15s %-15s %-15s %-15s\n","ID ESTADIA","NOMBRE DUEÑO"," TEL. CONTACTO "," NOMBRE PERRO","RAZA PERRO","FECHA DE INGRESO");
+	printf("________________________________________________________________________________________________\n");
+
+}
+
+void cartelVistaPrevia()
+{
+
+	printf("\n\n\t\t\t\t## VISTA PREVIA DE ESTADIA ##");
 	printf("\n________________________________________________________________________________________________\n");
 	printf("\n%-15s %-15s %-15s %-15s %-15s %-15s\n","ID ESTADIA","NOMBRE DUEÑO"," TEL. CONTACTO "," NOMBRE PERRO","RAZA PERRO","FECHA DE INGRESO");
 	printf("________________________________________________________________________________________________\n");

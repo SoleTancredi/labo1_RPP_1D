@@ -40,5 +40,6 @@ int subMenuModifEstadia(EstadiaDiaria* arrayEstadia, int tam,int* option);
 int validIdEstadia(EstadiaDiaria* arrayEstadia, int tam, int id);
 int ordenarEstadia(EstadiaDiaria* arrayEstadia,int tam);
 void cartelMostrarEstadia();
+void cartelVistaPrevia();
 
 #endif /* ESTADIADIARIA_H_ */

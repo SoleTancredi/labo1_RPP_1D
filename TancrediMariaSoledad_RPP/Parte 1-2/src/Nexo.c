@@ -69,11 +69,11 @@ int altaEstadia(EstadiaDiaria* arrayEstadia, int tam, int* id, Perro* arrayPerro
 				if(indexByIdPerro(arrayPerro, tamP,bufferE.idPerro, &iPerro) == 0)
 				{
 				    bufferE.id = *id;
-                    cartelMostrarEstadia();
+                    cartelVistaPrevia();
                     mostrarUnidadEstadia(bufferE,arrayPerro[iPerro], arrayDuenio[iDuenio]);
-                    if(utn_getNumber(&rtaSeguir,"\nDesea cargar los datos ?"
-                    		"\n[1] SI"
-                    		"\n[2] NO", "\nError.",1,2, 1) == 0)
+                    if(utn_getNumber(&rtaSeguir,"\n » DESEA CARGAR LOS DATOS ?"
+                    		"\n  [1] SI "
+                    		"\n  [2] NO ", "\nError.",1,2, 1) == 0)
                     {
                     	if(rtaSeguir == 1)
                     	{
