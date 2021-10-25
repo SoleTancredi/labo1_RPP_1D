@@ -18,7 +18,7 @@ void estadia_listarEstadiaConPerro(EstadiaDiaria estadia,Perro perro);
 int estadia_listarEstadiasConPerros(EstadiaDiaria* estadia,int tamEstadia,Perro* perro,int tamPerro);
 int mostrarUnidadEstadia(EstadiaDiaria unaEstadia, Perro arrayPerro, Duenio arrayDuenio);
 void mostrarListaEstadias(EstadiaDiaria* arrayEstadias, int tam, Perro* arrayPerros, int tamPerro, Duenio* arrayDuenios, int tamDuenio);
-int darDeBajaEstadia(EstadiaDiaria* arrayEstadia, int tam, Perro* arraPerros, int tamPerro, Duenio* arrayDuenio, int tamDuenio);
+int darDeBajaEstadia(EstadiaDiaria* arrayEstadia, int tam, Perro* arrayPerros, int tamPerro, Duenio* arrayDuenio, int tamDuenio);
 void cartelMostrarEstadia();
 void cartelVistaPrevia();
 void cartelEstadiaElegida();

@@ -175,18 +175,16 @@ int modificarEstadia(EstadiaDiaria* arrayEstadia, int tam, Perro* arrayPerritos,
 						break;
 					case 3:
 						if(rta1 == 1 || rta2 == 1)
-						{   // cambios realizados :
+						{
 							indexByIdDuenio(arrayDuenio, tamDuenio,arrayEstadia[indice].idDuenio, &indiceDuenio);
 							cartelEstadiaModificada();
 							mostrarUnidadEstadia(arrayEstadia[indice], arrayPerritos[indicePerro], arrayDuenio[indiceDuenio]);
 							printf("\n »»» Saliendo al menu principal");
-							//system pause
 						}
 						else
 						{
 							printf("\n »» NO HUBO CAMBIOS.\n");
 							printf("\n »»» Saliendo al menu principal");
-							// no hubo modificaciones,saliendo al menu principal...
 						}
 						break;
 				}
@@ -206,8 +204,6 @@ void mostrarPerrosConSusEstadias(Perro* arrayPerro, int tamPerro, EstadiaDiaria*
 {
 	int iDuenio;
 
-
-
 	if(arrayPerro != NULL && arrayEstadia != NULL)
 	{
 		for(int i = 0; i < tamPerro; i++)
@@ -224,8 +220,6 @@ void mostrarPerrosConSusEstadias(Perro* arrayPerro, int tamPerro, EstadiaDiaria*
 
 			}
 		}
-
-
 	}
 }
 
@@ -249,24 +243,25 @@ void mostrarListaEstadias(EstadiaDiaria* arrayEstadias, int tam, Perro* arrayPer
 	int indexPerro;
 	int indexDuenio;
 
-	cartelMostrarEstadia();
-	for(int i =0; i < tam; i++)
+	if(arrayEstadias != NULL && arrayPerros != NULL && arrayDuenios != NULL)
 	{
-		//printf("\nmostrar I valor: %d\n", i);
-		//id estadia, id perro, telefon, nombreduenio, fecha
-		indexByIdPerro(arrayPerros, tamPerro, arrayEstadias[i].idPerro, &indexPerro);
-		indexByIdDuenio(arrayDuenios, tamDuenio, arrayEstadias[i].idDuenio, &indexDuenio);
-		if(mostrarUnidadEstadia(arrayEstadias[i], arrayPerros[indexPerro], arrayDuenios[indexDuenio]) == 0)
+		cartelMostrarEstadia();
+		for(int i =0; i < tam; i++)
 		{
-			printf("------------------------------------------------------------------------------------------------\n");
-			conteoEstadias++;
+			indexByIdPerro(arrayPerros, tamPerro, arrayEstadias[i].idPerro, &indexPerro);
+			indexByIdDuenio(arrayDuenios, tamDuenio, arrayEstadias[i].idDuenio, &indexDuenio);
+			if(mostrarUnidadEstadia(arrayEstadias[i], arrayPerros[indexPerro], arrayDuenios[indexDuenio]) == 0)
+			{
+				printf("------------------------------------------------------------------------------------------------\n");
+				conteoEstadias++;
+			}
 		}
-	}
 
-	printf("\n\t\t\t\t\t\t\t\t\tCantidad de Estadias:%d \n",conteoEstadias);
+		printf("\n\t\t\t\t\t\t\t\t\tCantidad de Estadias:%d \n",conteoEstadias);
+	}
 }
 
-int darDeBajaEstadia(EstadiaDiaria* arrayEstadia, int tam, Perro* arraPerros, int tamPerro, Duenio* arrayDuenio, int tamDuenio)
+int darDeBajaEstadia(EstadiaDiaria* arrayEstadia, int tam, Perro* arrayPerros, int tamPerro, Duenio* arrayDuenio, int tamDuenio)
 {
 	int retorno = -1;
 	int id;
@@ -275,20 +270,20 @@ int darDeBajaEstadia(EstadiaDiaria* arrayEstadia, int tam, Perro* arraPerros, in
 	int indiceDuenio;
 	int rta;
 
-	if(arrayEstadia!= NULL)
+	if(arrayEstadia!= NULL && arrayPerros != NULL && arrayDuenio != NULL)
 	{
 		printf("\n***** DAR DE BAJA UNA ESTADIA *****\n");
 
-		mostrarListaEstadias(arrayEstadia, tam, arraPerros, tamPerro, arrayDuenio, tamDuenio);
+		mostrarListaEstadias(arrayEstadia, tam, arrayPerros, tamPerro, arrayDuenio, tamDuenio);
 
 		if( utn_getNumber(&id, "\n --> SELECCIONE UNA ESTADIA MEDIANTE ID : ","\n × ERROR. REINGRESE EL ID."
 					, 100000, 150000, 1) == 0 && findByIdEstadia(arrayEstadia, tam, id, &indice) == 0)
 
 		{
-			indexByIdPerro(arraPerros, tamPerro, arrayEstadia[indice].idPerro,&indicePerro);
+			indexByIdPerro(arrayPerros, tamPerro, arrayEstadia[indice].idPerro,&indicePerro);
 			indexByIdDuenio(arrayDuenio, tamDuenio, arrayEstadia[indice].idDuenio, &indiceDuenio);
 			cartelEstadiaElegida();
-			mostrarUnidadEstadia(arrayEstadia[indice], arraPerros[indicePerro], arrayDuenio[indiceDuenio]);
+			mostrarUnidadEstadia(arrayEstadia[indice], arrayPerros[indicePerro], arrayDuenio[indiceDuenio]);
 			if(utn_getNumber(&rta,"\n » CONFIRMAR BAJA ? "
             		"\n  [1] SI "
             		"\n  [2] NO ", "\n × Error.\n",1,2, 1) == 0)
@@ -315,12 +310,10 @@ void cartelMostrarEstadia()
 
 void cartelVistaPrevia()
 {
-
 	printf("\n\n\t\t\t\t## VISTA PREVIA DE ESTADIA ##");
 	printf("\n________________________________________________________________________________________________\n");
 	printf("\n%-15s %-15s %-15s %-15s %-15s %-15s\n","ID ESTADIA","NOMBRE DUEÑO"," TEL. CONTACTO "," NOMBRE PERRO","RAZA PERRO","FECHA DE INGRESO");
 	printf("________________________________________________________________________________________________\n");
-
 }
 
 void cartelEstadiaElegida()
@@ -349,7 +342,6 @@ void cartelPerroIngresado()
 
 void cartelMostrarEstadiaPorPerro(Perro unidadPerro)
 {
-
     if(unidadPerro.isEmpty == 1)
     {
     	printf("\n\t\t\t\t ESTADIAS DE »» [%s] «« ", unidadPerro.nombre);
@@ -367,94 +359,95 @@ int perroConMasEstadias(EstadiaDiaria* arrayEstadias, int tamE, Perro* arrayPerr
 	int contSheila = 0;
 	int contReina = 0;
 
-	for(int i = 0; i < tamE; i++)
+	if(arrayEstadias != NULL && arrayPerro != NULL)
 	{
-		if(arrayEstadias[i].idPerro == arrayPerro[0].id)
+		for(int i = 0; i < tamE; i++)
 		{
-			contLobo++;
-		}
-		else
-		{
-			if(arrayEstadias[i].idPerro == arrayPerro[1].id)
+			if(arrayEstadias[i].idPerro == arrayPerro[0].id)
 			{
-				contSheila++;
+				contLobo++;
 			}
 			else
 			{
-				if(arrayEstadias[i].idPerro == arrayPerro[2].id)
+				if(arrayEstadias[i].idPerro == arrayPerro[1].id)
 				{
-					contReina++;
-				}
-			}
-		}
-	}
-
-	printf("\n >>> CANTIDAD DE ESTADIAS DE CADA PERRITO: \n");
-    printf("\n  »»» LOBO   [%d]", contLobo);
-    printf("\n  »»» SHEILA [%d]", contSheila);
-    printf("\n  »»» REINA  [%d]", contReina);
-
-	if(contLobo > contSheila && contLobo > contReina)
-	{
-		if(contLobo == contSheila)
-		{
-			printf("\n\n »»»» LOS PERRITOS CON MAS ESTADIAS SON: Lobo y %s ««««", arrayPerro[1].nombre);
-		}
-		else
-		{
-			if(contLobo == contReina)
-			{
-				printf("\n\n »»»» LOS PERRITOS CON MAS ESTADIAS SON: Lobo y %s ««««", arrayPerro[2].nombre);
-			}
-			else
-			{
-				printf("\n\n »»»» EL PERRITO CON MAS ESTADIAS ES LOBO ««««");
-			}
-		}
-	}
-	else
-	{
-		if(contSheila > contLobo && contSheila > contReina)
-		{
-			if(contSheila == contLobo)
-			{
-				printf("\n\n »»»» LOS PERRITOS CON MAS ESTADIAS SON: Sheila y %s ««««", arrayPerro[0].nombre);
-			}
-			else
-			{
-				if(contSheila == contReina)
-				{
-					printf("\n\n »»»» LOS PERRITOS CON MAS ESTADIAS SON: Sheila y %s ««««", arrayPerro[2].nombre);
+					contSheila++;
 				}
 				else
 				{
-					printf("\n\n »»»» EL PERRITO CON MAS ESTADIAS ES SHEILA ««««");
+					if(arrayEstadias[i].idPerro == arrayPerro[2].id)
+					{
+						contReina++;
+					}
 				}
 			}
-
 		}
-		else
+
+		printf("\n >>> CANTIDAD DE ESTADIAS DE CADA PERRITO: \n");
+		printf("\n  »»» LOBO   [%d]", contLobo);
+		printf("\n  »»» SHEILA [%d]", contSheila);
+		printf("\n  »»» REINA  [%d]", contReina);
+
+		if(contLobo > contSheila && contLobo > contReina)
 		{
-			if(contReina == contLobo)
+			if(contLobo == contSheila)
 			{
-				printf("\n\n »»»» LOS PERRITOS CON MAS ESTADIAS SON: Reina y %s ««««", arrayPerro[0].nombre);
+				printf("\n\n »»»» LOS PERRITOS CON MAS ESTADIAS SON: Lobo y %s ««««", arrayPerro[1].nombre);
 			}
 			else
 			{
-				if(contReina == contSheila)
+				if(contLobo == contReina)
 				{
-					printf("\n\n »»»» LOS PERRITOS CON MAS ESTADIAS SON: Reina y %s ««««", arrayPerro[1].nombre);
+					printf("\n\n »»»» LOS PERRITOS CON MAS ESTADIAS SON: Lobo y %s ««««", arrayPerro[2].nombre);
 				}
 				else
 				{
-					printf("\n\n »»»» EL PERRITO CON MAS ESTADIAS ES REINA ««««");
+					printf("\n\n »»»» EL PERRITO CON MAS ESTADIAS ES LOBO ««««");
 				}
 			}
 		}
-	}
+		else
+		{
+			if(contSheila > contLobo && contSheila > contReina)
+			{
+				if(contSheila == contLobo)
+				{
+					printf("\n\n »»»» LOS PERRITOS CON MAS ESTADIAS SON: Sheila y %s ««««", arrayPerro[0].nombre);
+				}
+				else
+				{
+					if(contSheila == contReina)
+					{
+						printf("\n\n »»»» LOS PERRITOS CON MAS ESTADIAS SON: Sheila y %s ««««", arrayPerro[2].nombre);
+					}
+					else
+					{
+						printf("\n\n »»»» EL PERRITO CON MAS ESTADIAS ES SHEILA ««««");
+					}
+				}
 
-
-
+			}
+			else
+			{
+				if(contReina == contLobo)
+				{
+					printf("\n\n »»»» LOS PERRITOS CON MAS ESTADIAS SON: Reina y %s ««««", arrayPerro[0].nombre);
+				}
+				else
+				{
+					if(contReina == contSheila)
+					{
+						printf("\n\n »»»» LOS PERRITOS CON MAS ESTADIAS SON: Reina y %s ««««", arrayPerro[1].nombre);
+					}
+					else
+					{
+						printf("\n\n »»»» EL PERRITO CON MAS ESTADIAS ES REINA ««««");
+					}
+				}
+			}
+		}
+		retorno = 0;
+}
 	return retorno;
 }
 
