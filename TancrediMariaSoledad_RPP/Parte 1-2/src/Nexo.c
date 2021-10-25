@@ -360,6 +360,104 @@ void cartelMostrarEstadiaPorPerro(Perro unidadPerro)
 
 }
 
+int perroConMasEstadias(EstadiaDiaria* arrayEstadias, int tamE, Perro* arrayPerro, int tamP)
+{
+	int retorno = -1;
+	int contLobo = 0;
+	int contSheila = 0;
+	int contReina = 0;
+
+	for(int i = 0; i < tamE; i++)
+	{
+		if(arrayEstadias[i].idPerro == arrayPerro[0].id)
+		{
+			contLobo++;
+		}
+		else
+		{
+			if(arrayEstadias[i].idPerro == arrayPerro[1].id)
+			{
+				contSheila++;
+			}
+			else
+			{
+				if(arrayEstadias[i].idPerro == arrayPerro[2].id)
+				{
+					contReina++;
+				}
+			}
+		}
+	}
+
+	printf("\n >>> CANTIDAD DE ESTADIAS DE CADA PERRITO: \n");
+    printf("\n  »»» LOBO   [%d]", contLobo);
+    printf("\n  »»» SHEILA [%d]", contSheila);
+    printf("\n  »»» REINA  [%d]", contReina);
+
+	if(contLobo > contSheila && contLobo > contReina)
+	{
+		if(contLobo == contSheila)
+		{
+			printf("\n\n »»»» LOS PERRITOS CON MAS ESTADIAS SON: Lobo y %s ««««", arrayPerro[1].nombre);
+		}
+		else
+		{
+			if(contLobo == contReina)
+			{
+				printf("\n\n »»»» LOS PERRITOS CON MAS ESTADIAS SON: Lobo y %s ««««", arrayPerro[2].nombre);
+			}
+			else
+			{
+				printf("\n\n »»»» EL PERRITO CON MAS ESTADIAS ES LOBO ««««");
+			}
+		}
+	}
+	else
+	{
+		if(contSheila > contLobo && contSheila > contReina)
+		{
+			if(contSheila == contLobo)
+			{
+				printf("\n\n »»»» LOS PERRITOS CON MAS ESTADIAS SON: Sheila y %s ««««", arrayPerro[0].nombre);
+			}
+			else
+			{
+				if(contSheila == contReina)
+				{
+					printf("\n\n »»»» LOS PERRITOS CON MAS ESTADIAS SON: Sheila y %s ««««", arrayPerro[2].nombre);
+				}
+				else
+				{
+					printf("\n\n »»»» EL PERRITO CON MAS ESTADIAS ES SHEILA ««««");
+				}
+			}
+
+		}
+		else
+		{
+			if(contReina == contLobo)
+			{
+				printf("\n\n »»»» LOS PERRITOS CON MAS ESTADIAS SON: Reina y %s ««««", arrayPerro[0].nombre);
+			}
+			else
+			{
+				if(contReina == contSheila)
+				{
+					printf("\n\n »»»» LOS PERRITOS CON MAS ESTADIAS SON: Reina y %s ««««", arrayPerro[1].nombre);
+				}
+				else
+				{
+					printf("\n\n »»»» EL PERRITO CON MAS ESTADIAS ES REINA ««««");
+				}
+			}
+		}
+	}
+
+
+
+	return retorno;
+}
+
 
 
 

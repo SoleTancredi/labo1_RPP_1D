@@ -104,7 +104,7 @@ int main(void)
 			printf("\n »»» PROMEDIO EDAD DE LOS PERROS: [%.2f]",promedioEdadPerritos);
 			break;
 		case 7:
-             //falta
+            perroConMasEstadias(arrayEstadias, CANT_E, arrayPerros, CANT_P);
 			break;
 		case 8:
 			mostrarPerrosConSusEstadias(arrayPerros, CANT_P, arrayEstadias, CANT_E,arrayDuenio, CANT_D);
