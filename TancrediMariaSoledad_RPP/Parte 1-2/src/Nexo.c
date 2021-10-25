@@ -202,22 +202,30 @@ int modificarEstadia(EstadiaDiaria* arrayEstadia, int tam, Perro* arrayPerritos,
 	return retorno;
 }
 
-void mostrarPerrosConSusEstadias(Perro* arrayPerro, int tamPerro, EstadiaDiaria* arrayEstadia, int tamEstadia)
+void mostrarPerrosConSusEstadias(Perro* arrayPerro, int tamPerro, EstadiaDiaria* arrayEstadia, int tamEstadia, Duenio* arrayDuenio, int tamDuenio)
 {
+	int iDuenio;
+
+
 
 	if(arrayPerro != NULL && arrayEstadia != NULL)
 	{
 		for(int i = 0; i < tamPerro; i++)
 		{
+			cartelMostrarEstadiaPorPerro(arrayPerro[i]);
+
 			for(int j = 0; j < tamEstadia; j++)
 			{
 				if(arrayPerro[i].id == arrayEstadia[j].idPerro)
 				{
-					//mostrarUnidadEstadia(arrayEstadia[j]);
+					indexByIdDuenio(arrayDuenio, tamDuenio, arrayEstadia[j].idDuenio, &iDuenio);
+					mostrarUnidadEstadia(arrayEstadia[j], arrayPerro[i], arrayDuenio[iDuenio]);
      			}
 
 			}
 		}
+
+
 	}
 }
 
@@ -303,7 +311,6 @@ void cartelMostrarEstadia()
 	printf("\n________________________________________________________________________________________________\n");
 	printf("\n%-15s %-15s %-15s %-15s %-15s %-15s\n","ID ESTADIA","NOMBRE DUEÑO"," TEL. CONTACTO "," NOMBRE PERRO","RAZA PERRO","FECHA DE INGRESO");
 	printf("________________________________________________________________________________________________\n");
-
 }
 
 void cartelVistaPrevia()
@@ -339,4 +346,20 @@ void cartelPerroIngresado()
 	printf("\n%-15s %-15s %-15s %-15s \n","ID PERRO ","NOMBRE ","RAZA ","EDAD ");
 	printf("__________________________________________________________\n");
 }
+
+void cartelMostrarEstadiaPorPerro(Perro unidadPerro)
+{
+
+    if(unidadPerro.isEmpty == 1)
+    {
+    	printf("\n\t\t\t\t ESTADIAS DE »» [%s] «« ", unidadPerro.nombre);
+		printf("\n________________________________________________________________________________________________\n");
+		printf("\n%-15s %-15s %-15s %-15s %-15s %-15s\n","ID ESTADIA","NOMBRE DUEÑO"," TEL. CONTACTO "," NOMBRE PERRO","RAZA PERRO","FECHA DE INGRESO");
+		printf("________________________________________________________________________________________________\n");
+    }
+
+}
+
+
+
 

@@ -34,16 +34,6 @@ int main(void)
 	//int flagReserva = 0;
 	int opcion;
 	float promedioEdadPerritos;
-	//no harcodear estadias
-	//dejar por fuera menu fecha
-	//reveer validacion telefono contacto
-	//usar system pause
-	//mejorar el menu(ver maqueta)
-	//permitir listar perros sin condicionar
-	//hacer punto 7
-	//punto ocho escribir el nombre de cada perro, cambiar la forma en que se muestran
-	//cuando muestro estadia, no mostrar id perro id duenio
-	//ver si las validaciones van aparte
 
 	inicializarEstadia(arrayEstadias, CANT_E);
 	inicializarPerro( arrayPerros,CANT_P);
@@ -51,7 +41,7 @@ int main(void)
 	cargarPerrosHarcode(arrayPerros, &idPerro);
 	cargarDuenioHarcode(arrayDuenio, &idDuenio);
 
-	addEstadia(&arrayEstadias[0], &id, "ABEL", "0221596351203", 7001 ,30000,20,12,2020);
+	addEstadia(&arrayEstadias[0], &id, "ABEL", "0221596351203", 7000 ,30000,20,12,2020);
 	addEstadia(&arrayEstadias[1], &id, "Carlos", "1123456789", 7002,31000,02,03,1998);
 	addEstadia(&arrayEstadias[2], &id, "Pedro", "02248429672", 7000,32000,20,12,2020);
 	addEstadia(&arrayEstadias[3], &id, "ZETA", "4545454545", 7001 ,33000,17,12,2020);
@@ -117,7 +107,8 @@ int main(void)
              //falta
 			break;
 		case 8:
-			mostrarPerrosConSusEstadias(arrayPerros, CANT_P, arrayEstadias, CANT_E);
+			mostrarPerrosConSusEstadias(arrayPerros, CANT_P, arrayEstadias, CANT_E,arrayDuenio, CANT_D);
+
 			break;
 		case 9:
 			printf("\nFIN DEL PROGRAMA");

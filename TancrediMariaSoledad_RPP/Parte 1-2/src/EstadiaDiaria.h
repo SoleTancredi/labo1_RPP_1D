@@ -32,6 +32,7 @@ int addEstadia(EstadiaDiaria* unidadEstadia,int* id, char* nombreDuenio, char* t
 int subMenuModifEstadia(EstadiaDiaria* arrayEstadia, int tam,int* option);
 int validIdEstadia(EstadiaDiaria* arrayEstadia, int tam, int id);
 int ordenarEstadia(EstadiaDiaria* arrayEstadia,int tam);
+int indexByIdEstadia(EstadiaDiaria* arrayEstadia, int tam, int id, int* indice);
 
 
 #endif /* ESTADIADIARIA_H_ */

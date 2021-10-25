@@ -338,6 +338,26 @@ int ordenarEstadia(EstadiaDiaria* arrayEstadia,int tam)
 	return retorno;
 }
 
+int indexByIdEstadia(EstadiaDiaria* arrayEstadia, int tam, int id, int* indice)
+{
+	int retorno = -1;
+
+	if(arrayEstadia != NULL && indice != NULL)
+	{
+		for(int i = 0; i < tam; i++)
+		{
+			if(arrayEstadia[i].isEmpty == 1 && arrayEstadia[i].id == id)
+			{
+				*indice = i;
+				retorno = 0;
+			}
+		}
+	}
+
+	return retorno;
+
+}
+
 
 
 

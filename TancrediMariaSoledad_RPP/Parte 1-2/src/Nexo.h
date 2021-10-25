@@ -13,7 +13,7 @@
 
 int altaEstadia(EstadiaDiaria* arrayEstadia, int tam, int* id, Perro* arrayPerro, int tamP, Duenio* arrayDuenio, int tamD);
 int modificarEstadia(EstadiaDiaria* arrayEstadia, int tam, Perro* arrayPerritos, int tamPerro, Duenio* arrayDuenio, int tamDuenio);
-void mostrarPerrosConSusEstadias(Perro* arrayPerro, int tamPerro, EstadiaDiaria* arrayEstadia, int tamEstadia);
+void mostrarPerrosConSusEstadias(Perro* arrayPerro, int tamPerro, EstadiaDiaria* arrayEstadia, int tamEstadia, Duenio* arrayDuenio, int tamDuenio);
 void estadia_listarEstadiaConPerro(EstadiaDiaria estadia,Perro perro);
 int estadia_listarEstadiasConPerros(EstadiaDiaria* estadia,int tamEstadia,Perro* perro,int tamPerro);
 int mostrarUnidadEstadia(EstadiaDiaria unaEstadia, Perro arrayPerro, Duenio arrayDuenio);
@@ -24,5 +24,6 @@ void cartelVistaPrevia();
 void cartelEstadiaElegida();
 void cartelPerroIngresado();
 void cartelEstadiaModificada();
+void cartelMostrarEstadiaPorPerro(Perro unidadPerro);
 
 #endif /* NEXO_H_ */
