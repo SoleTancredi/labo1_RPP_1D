@@ -28,10 +28,10 @@ void cargarDuenioHarcode(Duenio* arrayDuenio, int* id)
 {
 		Duenio bufferDuenio[] =
 		{
-			{30000, "ABEL", "Gonzales", "0221596351203",1},
+			{30000, "Abel", "Gonzales", "1596351203",1},
 			{31000, "Carlos", "Perez", "1168451236",1},
-			{32000, "Pedro", "Alvarez", "02248429672",1},
-			{33000, "ZETA", "Zarate", "1584752369",1},
+			{32000, "Pedro", "Alvarez", "48429672",1},
+			{33000, "Zahira", "Zarate", "1589452301",1},
 			{34000, "Ernesto", "Luces","48425632",1}
 		};
 

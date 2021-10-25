@@ -41,10 +41,10 @@ int main(void)
 	cargarPerrosHarcode(arrayPerros, &idPerro);
 	cargarDuenioHarcode(arrayDuenio, &idDuenio);
 
-	addEstadia(&arrayEstadias[0], &id, "ABEL", "0221596351203", 7000 ,30000,20,12,2020);
+	addEstadia(&arrayEstadias[0], &id, "ABEL", "1596351203", 7000 ,30000,20,12,2020);
 	addEstadia(&arrayEstadias[1], &id, "Carlos", "1123456789", 7002,31000,02,03,1998);
-	addEstadia(&arrayEstadias[2], &id, "Pedro", "02248429672", 7000,32000,20,12,2020);
-	addEstadia(&arrayEstadias[3], &id, "ZETA", "4545454545", 7001 ,33000,17,12,2020);
+	addEstadia(&arrayEstadias[2], &id, "Pedro", "48429672", 7000,32000,20,12,2020);
+	addEstadia(&arrayEstadias[3], &id, "ZETA", "1589452301", 7001 ,33000,17,12,2020);
 	addEstadia(&arrayEstadias[4], &id, "Ernesto","48425632", 7002, 34000, 02, 03, 1998);
 	do
 	{

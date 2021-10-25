@@ -8,7 +8,7 @@
 #ifndef ESTADIADIARIA_H_
 #define ESTADIADIARIA_H_
 #define TAM_NOMBRE 20
-#define TAM_TEL 15
+#define TAM_TEL 11
 #include "Fecha.h"
 
 struct
