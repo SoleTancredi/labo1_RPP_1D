@@ -13,6 +13,13 @@
 #include "Fecha.h"
 #include "Inputs.h"
 
+/**
+ * @fn int cargarFecha(Fecha*)
+ * @brief carga los campos correspondientes a la fecha de ingreso de la estadia
+ *
+ * @param fecha
+ * @return
+ */
 int cargarFecha(Fecha* fecha)
 {
 	int retorno = -1;

@@ -19,14 +19,17 @@
 #include "Inputs.h"
 
 /**
- * @fn int altaEstadia(EstadiaDiaria*, int, int*, Perro*, int)
- * @brief pide lo datos al usuario para que de de alta un nuevo elemento
+ * @fn int altaEstadia(EstadiaDiaria*, int, int*, Perro*, int, Duenio*, int)
+ * @brief toma por parametro los arrays de la 3 estructuras y sus tamaños, va pidiendo los datos
+ * correspondientes a los campos que se necesiten para dar de alta una nueva estadia
  *
  * @param arrayEstadia
  * @param tam
  * @param id
  * @param arrayPerro
  * @param tamP
+ * @param arrayDuenio
+ * @param tamD
  * @return
  */
 int altaEstadia(EstadiaDiaria* arrayEstadia, int tam, int* id, Perro* arrayPerro, int tamP, Duenio* arrayDuenio, int tamD)
@@ -84,23 +87,23 @@ int altaEstadia(EstadiaDiaria* arrayEstadia, int tam, int* id, Perro* arrayPerro
 				{
 					printf("\nEl ID ingresado no existe.");
 				}
-
 			}
-
 		}
-
 	}
-
 	return retorno;
 }
 
 /**
- * @fn int modificarEstadia(EstadiaDiaria*, int, Perro*)
- * @brief modifica algunos datos de la estadia segun eleccion del usuario
+ * @fn int modificarEstadia(EstadiaDiaria*, int, Perro*, int, Duenio*, int)
+ * @brief recibe por parametro los arrays de las 3 estructuras y sus tamaños, va modificando
+ * los datos que el usuario solicite
  *
  * @param arrayEstadia
  * @param tam
  * @param arrayPerritos
+ * @param tamPerro
+ * @param arrayDuenio
+ * @param tamDuenio
  * @return
  */
 int modificarEstadia(EstadiaDiaria* arrayEstadia, int tam, Perro* arrayPerritos, int tamPerro, Duenio* arrayDuenio, int tamDuenio)
@@ -201,6 +204,18 @@ int modificarEstadia(EstadiaDiaria* arrayEstadia, int tam, Perro* arrayPerritos,
 	return retorno;
 }
 
+/**
+ * @fn void mostrarPerrosConSusEstadias(Perro*, int, EstadiaDiaria*, int, Duenio*, int)
+ * @brief muestra las estadias pertenecientes a cada perro, mostrando primero su nombre y debajo
+ * cada estadia que fue reservada en su nombre, si no posee estadias reservadas el perro no se muestra
+ *
+ * @param arrayPerro
+ * @param tamPerro
+ * @param arrayEstadia
+ * @param tamEstadia
+ * @param arrayDuenio
+ * @param tamDuenio
+ */
 void mostrarPerrosConSusEstadias(Perro* arrayPerro, int tamPerro, EstadiaDiaria* arrayEstadia, int tamEstadia, Duenio* arrayDuenio, int tamDuenio)
 {
 	int iDuenio;
@@ -224,8 +239,15 @@ void mostrarPerrosConSusEstadias(Perro* arrayPerro, int tamPerro, EstadiaDiaria*
 	}
 }
 
-
-
+/**
+ * @fn int mostrarUnidadEstadia(EstadiaDiaria, Perro, Duenio)
+ * @brief muestra una sola estadia
+ *
+ * @param unaEstadia
+ * @param arrayPerro
+ * @param arrayDuenio
+ * @return
+ */
 int mostrarUnidadEstadia(EstadiaDiaria unaEstadia, Perro arrayPerro, Duenio arrayDuenio)
 {
 	int ok=-1;
@@ -238,6 +260,17 @@ int mostrarUnidadEstadia(EstadiaDiaria unaEstadia, Perro arrayPerro, Duenio arra
 	return ok;
 }
 
+/**
+ * @fn void mostrarListaEstadias(EstadiaDiaria*, int, Perro*, int, Duenio*, int)
+ * @brief muestra mas de una estadia
+ *
+ * @param arrayEstadias
+ * @param tam
+ * @param arrayPerros
+ * @param tamPerro
+ * @param arrayDuenios
+ * @param tamDuenio
+ */
 void mostrarListaEstadias(EstadiaDiaria* arrayEstadias, int tam, Perro* arrayPerros, int tamPerro, Duenio* arrayDuenios, int tamDuenio)
 {
 	int conteoEstadias=0;
@@ -262,6 +295,18 @@ void mostrarListaEstadias(EstadiaDiaria* arrayEstadias, int tam, Perro* arrayPer
 	}
 }
 
+/**
+ * @fn int darDeBajaEstadia(EstadiaDiaria*, int, Perro*, int, Duenio*, int)
+ * @brief elimina una estadia solicitada, la misma debe existir para poder ser dada de baja
+ *
+ * @param arrayEstadia
+ * @param tam
+ * @param arrayPerros
+ * @param tamPerro
+ * @param arrayDuenio
+ * @param tamDuenio
+ * @return
+ */
 int darDeBajaEstadia(EstadiaDiaria* arrayEstadia, int tam, Perro* arrayPerros, int tamPerro, Duenio* arrayDuenio, int tamDuenio)
 {
 	int retorno = -1;
@@ -300,6 +345,11 @@ int darDeBajaEstadia(EstadiaDiaria* arrayEstadia, int tam, Perro* arrayPerros, i
 	return retorno;
 }
 
+/**
+ * @fn void cartelMostrarEstadia()
+ * @brief muestra un cartel, con un estilo determinado
+ *
+ */
 void cartelMostrarEstadia()
 {
 
@@ -309,6 +359,11 @@ void cartelMostrarEstadia()
 	printf("________________________________________________________________________________________________\n");
 }
 
+/**
+ * @fn void cartelVistaPrevia()
+ * @brief muestra un cartel, con un estilo determinado
+ *
+ */
 void cartelVistaPrevia()
 {
 	printf("\n\n\t\t\t\t## VISTA PREVIA DE ESTADIA ##");
@@ -317,6 +372,11 @@ void cartelVistaPrevia()
 	printf("________________________________________________________________________________________________\n");
 }
 
+/**
+ * @fn void cartelEstadiaElegida()
+ * @brief muestra un cartel, con un estilo determinado
+ *
+ */
 void cartelEstadiaElegida()
 {
 	printf("\n\n\t\t\t\t## ESTADIA ELEGIDA ##");
@@ -325,6 +385,11 @@ void cartelEstadiaElegida()
 	printf("________________________________________________________________________________________________\n");
 }
 
+/**
+ * @fn void cartelEstadiaModificada()
+ * @brief muestra un cartel, con un estilo determinado
+ *
+ */
 void cartelEstadiaModificada()
 {
 	printf("\n\n\t\t\t\t## ESTADIA MODIFICADA ##");
@@ -333,6 +398,11 @@ void cartelEstadiaModificada()
 	printf("________________________________________________________________________________________________\n");
 }
 
+/**
+ * @fn void cartelPerroIngresado()
+ * @brief muestra un cartel, con un estilo determinado
+ *
+ */
 void cartelPerroIngresado()
 {
 	printf("\n\t\t## NUEVO PERRO ELEGIDO ##");
@@ -341,6 +411,12 @@ void cartelPerroIngresado()
 	printf("__________________________________________________________\n");
 }
 
+/**
+ * @fn void cartelMostrarEstadiaPorPerro(Perro)
+ * @brief muestra un cartel, con un estilo determinado
+ *
+ * @param unidadPerro
+ */
 void cartelMostrarEstadiaPorPerro(Perro unidadPerro)
 {
     if(unidadPerro.isEmpty == 1)
@@ -353,6 +429,17 @@ void cartelMostrarEstadiaPorPerro(Perro unidadPerro)
 
 }
 
+/**
+ * @fn int perroConMasEstadias(EstadiaDiaria*, int, Perro*, int)
+ * @brief muestra la cantidad de estadias por cada perro, y el perro con mayor cantidad de estadias
+ * en caso de darse que coincidan dos perros con mayor cantidad de estadias se muestran ambos
+ *
+ * @param arrayEstadias
+ * @param tamE
+ * @param arrayPerro
+ * @param tamP
+ * @return
+ */
 int perroConMasEstadias(EstadiaDiaria* arrayEstadias, int tamE, Perro* arrayPerro, int tamP)
 {
 	int retorno = -1;

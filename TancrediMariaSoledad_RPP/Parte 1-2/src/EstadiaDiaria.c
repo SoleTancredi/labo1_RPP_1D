@@ -69,18 +69,6 @@ void inicializarEstadia(EstadiaDiaria* array, int tam)
 	}
 }
 
-
-
-
-/**
- * @fn void mostrarListaEstadias(EstadiaDiaria*, int)
- * @brief imprime el array completo de elementos
- *
- * @param arrayEstadias
- * @param tam
- */
-
-
 /**
  * @fn int eliminarEstadia(EstadiaDiaria*)
  * @brief da la baja logica de un elemento del array
@@ -332,12 +320,20 @@ int ordenarEstadia(EstadiaDiaria* arrayEstadia,int tam)
 
 		}while(flag == 0);
 	}
-
-
-
-
 	return retorno;
 }
+
+/**
+ * @fn int indexByIdEstadia(EstadiaDiaria*, int, int, int*)
+ * @brief recorre el array de estadias buscando el Id ingresado por parametro, si lo encuentra
+ * devuelve por parametro el index de la estadia perteneciente al id ingresado
+ *
+ * @param arrayEstadia
+ * @param tam
+ * @param id
+ * @param indice
+ * @return
+ */
 
 int indexByIdEstadia(EstadiaDiaria* arrayEstadia, int tam, int id, int* indice)
 {
@@ -359,7 +355,13 @@ int indexByIdEstadia(EstadiaDiaria* arrayEstadia, int tam, int id, int* indice)
 
 }
 
-
+/**
+ * @fn int systemPause(char*)
+ * @brief
+ *
+ * @param message
+ * @return
+ */
 int systemPause(char* message)
 {
 	int ret=-1;

@@ -32,6 +32,11 @@ void inicializarPerro(Perro* array, int tam)
 	}
 }
 
+/**
+ * @fn void cartelMostrarPerros()
+ * @brief muestra un cartel, con un estilo determinado
+ *
+ */
 void cartelMostrarPerros()
 {
 	printf("\n\t\t## LISTADO DE PERROS ##");
@@ -216,13 +221,14 @@ int addPerrito(Perro* pUnidadPerrito, int len, int* id, char* name, char* race, 
 }
 
 /**
- * @fn int menuModificar(Perro*, int)
- * @brief menu que muestra el cartel con las instrucciones ara que el usuario
- * valla mofidificando los datos.
+ * @fn int menuModificar(Perro*, int, int*, int*)
+ * @brief muestra un cartel y devuelve por referencia la opcion ingresada por el usuario
  *
  * @param arrayPerritos
  * @param len
- * @return retorna el numero de la opcion seleccionada.
+ * @param indice
+ * @param option
+ * @return
  */
 int menuModificar(Perro* arrayPerritos, int len, int* indice, int* option)
 {
@@ -427,6 +433,7 @@ int darDeBajaPerrito(Perro* arrayPerritos, int len)
 	int retorno = -1;
 	int id;
 	int indice;
+	int rta;
 
 	if(arrayPerritos != NULL)
 	{
@@ -438,13 +445,19 @@ int darDeBajaPerrito(Perro* arrayPerritos, int len)
 					, 7000, 10000, 1) == 0 && indexByIdPerro(arrayPerritos, len, id, &indice) == 0)
 
 		{
-			if(eliminarPerro(&arrayPerritos[indice]) == 0)
+			indexByIdPerro(arrayPerritos, len, id, indice);
+			cartelMostrarPerros();
+			mostrarUnidadPerro(arrayPerritos[indice]);
+			if(utn_getNumber(&rta,"\n » CONFIRMAR BAJA ? "
+								"\n  [1] SI "
+								"\n  [2] NO ", "\n × Error.\n",1,2, 1) == 0)
 			{
-				retorno = 0;
+				if(rta == 1 && eliminarEstadia(&arrayPerritos[indice]) == 0)
+				{
+					retorno = 0;
+				}
 			}
 		}
-
-
 	}
 
 	return retorno;

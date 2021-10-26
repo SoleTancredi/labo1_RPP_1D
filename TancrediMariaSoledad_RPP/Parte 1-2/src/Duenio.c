@@ -13,6 +13,14 @@
 #include "Duenio.h"
 #include "Inputs.h"
 
+/**
+ * @fn void inicializarDuenio(Duenio*, int)
+ * @brief se inicializa el isEmpty solamente ya que despues guiandome por ese dato, si esta vacio directamente
+ * no muestro el dato y si sucede lo contrario si.
+ *
+ * @param array
+ * @param tam
+ */
 void inicializarDuenio(Duenio* array, int tam)
 {
 	if(array != NULL && tam > 0)
@@ -24,6 +32,13 @@ void inicializarDuenio(Duenio* array, int tam)
 	}
 }
 
+/**
+ * @fn void cargarDuenioHarcode(Duenio*, int*)
+ * @brief harcodeo de algunos elementos
+ *
+ * @param arrayDuenio
+ * @param id
+ */
 void cargarDuenioHarcode(Duenio* arrayDuenio, int* id)
 {
 		Duenio bufferDuenio[] =
@@ -42,6 +57,11 @@ void cargarDuenioHarcode(Duenio* arrayDuenio, int* id)
 		}
 }
 
+/**
+ * @fn void cartelMostrarDuenio()
+ * @brief muestra un cartel, con un estilo determinado
+ *
+ */
 void cartelMostrarDuenio()
 {
 	printf("\n\t\t\t## LISTADO DE DUENIOS ##");
@@ -50,6 +70,13 @@ void cartelMostrarDuenio()
 	printf("__________________________________________________________________________\n");
 }
 
+/**
+ * @fn int mostrarUnidadDuenio(Duenio)
+ * @brief muestra un solo elemento
+ *
+ * @param unDuenio
+ * @return
+ */
 int mostrarUnidadDuenio(Duenio unDuenio)
 {
 	int ok=-1;
@@ -62,6 +89,13 @@ int mostrarUnidadDuenio(Duenio unDuenio)
 	return ok;
 }
 
+/**
+ * @fn void mostrarListaDuenios(Duenio*, int)
+ * @brief muestra la lista completa de elementos existentes
+ *
+ * @param arrayDuenio
+ * @param tam
+ */
 void mostrarListaDuenios(Duenio* arrayDuenio, int tam)
 {
 	int conteoDuenios=0;
@@ -78,6 +112,13 @@ void mostrarListaDuenios(Duenio* arrayDuenio, int tam)
 	printf("\n\t\t\t\t\t\tCantidad de Duenios:%d \n",conteoDuenios);
 }
 
+/**
+ * @fn int eliminarDuenio(Duenio*)
+ * @brief elimina un elemento
+ *
+ * @param unidadDuenio
+ * @return
+ */
 int eliminarDuenio(Duenio* unidadDuenio)
 {
 	int retorno=-1;
@@ -90,6 +131,15 @@ int eliminarDuenio(Duenio* unidadDuenio)
 	return retorno;
 }
 
+/**
+ * @fn int findEmptyDuenio(Duenio*, int)
+ * @brief recibe por parametro el array de tipo perro y su tamaño, recorre cada a elemento y compara el valor
+ * del campo isEmpty con 0 (ha encontrado un lugar libre), si NO es 0 la posicion esta ocupada.
+ *
+ * @param arrayDuenio
+ * @param tam
+ * @return
+ */
 int findEmptyDuenio(Duenio* arrayDuenio, int tam)
 {
 	int indice = -1;
@@ -108,6 +158,17 @@ int findEmptyDuenio(Duenio* arrayDuenio, int tam)
 	return indice;
 }
 
+/**
+ * @fn int indexByIdDuenio(Duenio*, int, int, int*)
+ * @brief busca el id ingresado en cada elemento del array, y al encontrarlo devuelde por puntero el
+ * la ubicacion especifica del elemento segun su indice
+ *
+ * @param arrayDuenio
+ * @param tam
+ * @param id
+ * @param indice
+ * @return
+ */
 int indexByIdDuenio(Duenio* arrayDuenio, int tam, int id, int* indice)
 {
 	int retorno = -1;
@@ -127,6 +188,12 @@ int indexByIdDuenio(Duenio* arrayDuenio, int tam, int id, int* indice)
 	return retorno;
 }
 
+/**
+ * @fn int menuDuenio()
+ * @brief muesrta cartel de menu
+ *
+ * @return
+ */
 int menuDuenio()
 {
 	int option;
@@ -150,6 +217,18 @@ return option;
 
 }
 
+/**
+ * @fn int addDuenio(Duenio*, int, int*, char*, char*, char*)
+ * @brief ubica los datos pedidos por paramentro en la estructura
+ *
+ * @param pUnidadDuenio
+ * @param tam
+ * @param id
+ * @param name
+ * @param apellido
+ * @param telefono
+ * @return
+ */
 int addDuenio(Duenio* pUnidadDuenio,int tam, int* id, char* name, char* apellido, char* telefono)
 {
 	int retorno = -1;
@@ -168,6 +247,17 @@ int addDuenio(Duenio* pUnidadDuenio,int tam, int* id, char* name, char* apellido
 	return retorno;
 }
 
+/**
+ * @fn int altaDuenio(Duenio*, int, int*)
+ * @brief recibe por paramentro un puntero al array que va a ser modificado, el tamaño y un puntero a la variable
+ * id; luego de ubicar un lugar libre con la funcion isEmpty, pide los datos al usuario y los mismos se pasan
+ * como argumento a la funcion add que ubica los datos en la estructura.
+ *
+ * @param arrayDuenio
+ * @param tam
+ * @param id
+ * @return
+ */
 int altaDuenio(Duenio* arrayDuenio, int tam, int* id)
 {
 	int retorno = -1;
@@ -192,15 +282,23 @@ int altaDuenio(Duenio* arrayDuenio, int tam, int* id)
 	return retorno;
 }
 
+/**
+ * @fn int menuModificarDuenio(Duenio*, int, int*, int*)
+ * @brief muestra un cartel con opciones para la modificacion
+ *
+ * @param arrayDuenio
+ * @param len
+ * @param indice
+ * @param option
+ * @return
+ */
 int menuModificarDuenio(Duenio* arrayDuenio, int len, int* indice, int* option)
 {
-
 	int retorno = -1;
 	int idBuscado;
 
 	if(arrayDuenio != NULL)
 	{
-
 		printf("\n***** MODIFICAR DATOS *****\n");
 
 		mostrarListaDuenios(arrayDuenio, len);
@@ -230,6 +328,14 @@ int menuModificarDuenio(Duenio* arrayDuenio, int len, int* indice, int* option)
 	return retorno;
 }
 
+/**
+ * @fn int modificarDuenio(Duenio*, int)
+ * @brief segun la eleccion del ususario va modificando cada uno de los datos del elemento.
+ *
+ * @param arrayDuenio
+ * @param len
+ * @return
+ */
 int modificarDuenio(Duenio* arrayDuenio, int len)
 {
 	int retorno = -1;
@@ -290,6 +396,14 @@ int modificarDuenio(Duenio* arrayDuenio, int len)
 	return retorno;
 }
 
+/**
+ * @fn int darDeBajaDuenio(Duenio*, int)
+ * @brief elimina un elemento del array, mediante el ingreso del ID del mismo
+ *
+ * @param arrayDuenio
+ * @param len
+ * @return
+ */
 int darDeBajaDuenio(Duenio* arrayDuenio, int len)
 {
 	int retorno = -1;
@@ -315,7 +429,15 @@ int darDeBajaDuenio(Duenio* arrayDuenio, int len)
 	return retorno;
 }
 
-
+/**
+ * @fn int validIdDuenio(Duenio*, int, int)
+ * @brief valida la existencia del Id
+ *
+ * @param arrayDuenio
+ * @param tam
+ * @param id
+ * @return
+ */
 int validIdDuenio(Duenio* arrayDuenio, int tam, int id)
 {
 	int retorno = -1;
