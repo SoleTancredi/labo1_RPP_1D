@@ -445,14 +445,13 @@ int darDeBajaPerrito(Perro* arrayPerritos, int len)
 					, 7000, 10000, 1) == 0 && indexByIdPerro(arrayPerritos, len, id, &indice) == 0)
 
 		{
-			indexByIdPerro(arrayPerritos, len, id, indice);
 			cartelMostrarPerros();
 			mostrarUnidadPerro(arrayPerritos[indice]);
 			if(utn_getNumber(&rta,"\n » CONFIRMAR BAJA ? "
 								"\n  [1] SI "
 								"\n  [2] NO ", "\n × Error.\n",1,2, 1) == 0)
 			{
-				if(rta == 1 && eliminarEstadia(&arrayPerritos[indice]) == 0)
+				if(rta == 1 && eliminarPerro(&arrayPerritos[indice]) == 0)
 				{
 					retorno = 0;
 				}
