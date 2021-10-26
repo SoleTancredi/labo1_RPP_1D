@@ -12,11 +12,11 @@
 #include <string.h>
 #include <ctype.h>
 #include <stdio_ext.h>
-#include "BibliotecaUtn2021.h"
 #include "EstadiaDiaria.h"
 #include "Perros.h"
 #include "Duenio.h"
 #include "Fecha.h"
+#include "Inputs.h"
 
 /**
  * @fn int altaEstadia(EstadiaDiaria*, int, int*, Perro*, int)

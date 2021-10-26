@@ -13,10 +13,10 @@
 #include <string.h>
 #include <ctype.h>
 #include <stdio_ext.h>
-#include "BibliotecaUtn2021.h"
 #include "Perros.h"
 #include "EstadiaDiaria.h"
 #include "Duenio.h"
+#include "Inputs.h"
 #include "Nexo.h"
 
 #define CANT_P 30
@@ -52,67 +52,67 @@ int main(void)
 
 		switch(opcion)
 		{
-		case 1:
+			case 1:
 
-			if(altaEstadia(arrayEstadias, CANT_E, &id, arrayPerros, CANT_P, arrayDuenio, CANT_D) == 0)
-			{
-				//flagReserva = 1;
-			}
-			else
-			{
-				printf("\n »» NO SE REALIZO LA RESERVA.");
-			}
-			break;
-		case 2:
-			if( modificarEstadia(arrayEstadias, CANT_E, arrayPerros,CANT_P, arrayDuenio, CANT_D) == 0)
-			{
-				//errorprintf("\n ");
-				//mostrarListaEstadias(arrayEstadias, CANT_E, arrayPerros, CANT_P, arrayDuenio, CANT_D);
-			}
-			else
-			{
-				printf("\n »» NO SE PUDO REALIZAR LA MODIFICACION. NO EXISTE NINGUNA RESERVA TODAVIA.");
-			}
-			break;
-		case 3:
-			if(darDeBajaEstadia(arrayEstadias, CANT_E, arrayPerros, CANT_P, arrayDuenio, CANT_D) == 0)
-			{
-				printf("\n »»» ESTADIA ELIMINADA «««");
-			}
-			else
-			{
-				printf("\n »» NO SE DIO DE BAJA.");
-			}
-			break;
-		case 4:
-			if(ordenarEstadia(arrayEstadias, CANT_E) == 0)
-			{
+				if(altaEstadia(arrayEstadias, CANT_E, &id, arrayPerros, CANT_P, arrayDuenio, CANT_D) == 0)
+				{
+					//flagReserva = 1;
+				}
+				else
+				{
+					printf("\n »» NO SE REALIZO LA RESERVA.");
+				}
+				break;
+			case 2:
+				if( modificarEstadia(arrayEstadias, CANT_E, arrayPerros,CANT_P, arrayDuenio, CANT_D) == 0)
+				{
+					//errorprintf("\n ");
+					//mostrarListaEstadias(arrayEstadias, CANT_E, arrayPerros, CANT_P, arrayDuenio, CANT_D);
+				}
+				else
+				{
+					printf("\n »» NO SE PUDO REALIZAR LA MODIFICACION. NO EXISTE NINGUNA RESERVA TODAVIA.");
+				}
+				break;
+			case 3:
+				if(darDeBajaEstadia(arrayEstadias, CANT_E, arrayPerros, CANT_P, arrayDuenio, CANT_D) == 0)
+				{
+					printf("\n »»» ESTADIA ELIMINADA «««");
+				}
+				else
+				{
+					printf("\n »» NO SE DIO DE BAJA.");
+				}
+				break;
+			case 4:
+				if(ordenarEstadia(arrayEstadias, CANT_E) == 0)
+				{
 
-				mostrarListaEstadias(arrayEstadias,CANT_E, arrayPerros, CANT_P, arrayDuenio, CANT_D);
-			}
-			else
-			{
-				printf("\nAun no se ha reservado la estadia de ningun perrito. ");
-			}
+					mostrarListaEstadias(arrayEstadias,CANT_E, arrayPerros, CANT_P, arrayDuenio, CANT_D);
+				}
+				else
+				{
+					printf("\nAun no se ha reservado la estadia de ningun perrito. ");
+				}
 
-			break;
-		case 5:
-			mostrarListaPerros(arrayPerros, CANT_P);
-			break;
-		case 6:
-			promedioEdadPerritos = promedioEdadPerros(arrayPerros, CANT_P);
-			printf("\n »»» PROMEDIO EDAD DE LOS PERROS: [%.2f]",promedioEdadPerritos);
-			break;
-		case 7:
-            perroConMasEstadias(arrayEstadias, CANT_E, arrayPerros, CANT_P);
-			break;
-		case 8:
-			mostrarPerrosConSusEstadias(arrayPerros, CANT_P, arrayEstadias, CANT_E,arrayDuenio, CANT_D);
+				break;
+			case 5:
+				mostrarListaPerros(arrayPerros, CANT_P);
+				break;
+			case 6:
+				promedioEdadPerritos = promedioEdadPerros(arrayPerros, CANT_P);
+				printf("\n »»» PROMEDIO EDAD DE LOS PERROS: [%.2f]",promedioEdadPerritos);
+				break;
+			case 7:
+				perroConMasEstadias(arrayEstadias, CANT_E, arrayPerros, CANT_P);
+				break;
+			case 8:
+				mostrarPerrosConSusEstadias(arrayPerros, CANT_P, arrayEstadias, CANT_E,arrayDuenio, CANT_D);
 
-			break;
-		case 9:
-			printf("\nFIN DEL PROGRAMA");
-			break;
+				break;
+			case 9:
+				printf("\nFIN DEL PROGRAMA");
+				break;
 		}
 
 	}while(opcion != 9);

@@ -10,8 +10,8 @@
 #include <string.h>
 #include <ctype.h>
 #include <stdio_ext.h>
-#include "BibliotecaUtn2021.h"
 #include "Duenio.h"
+#include "Inputs.h"
 
 void inicializarDuenio(Duenio* array, int tam)
 {
