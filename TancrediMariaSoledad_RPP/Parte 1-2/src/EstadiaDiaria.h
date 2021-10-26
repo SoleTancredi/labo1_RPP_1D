@@ -33,6 +33,7 @@ int subMenuModifEstadia(EstadiaDiaria* arrayEstadia, int tam,int* option);
 int validIdEstadia(EstadiaDiaria* arrayEstadia, int tam, int id);
 int ordenarEstadia(EstadiaDiaria* arrayEstadia,int tam);
 int indexByIdEstadia(EstadiaDiaria* arrayEstadia, int tam, int id, int* indice);
+int systemPause(char* message);
 
 
 #endif /* ESTADIADIARIA_H_ */

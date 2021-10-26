@@ -18,7 +18,7 @@ int cargarFecha(Fecha* fecha)
 	int retorno = -1;
 	Fecha bufferF;
 
-	printf("\n --> INGRESE LA FECHA DE INGRESO.\n");
+	printf("\n --> INGRESE LA FECHA.\n");
 	if(utn_getNumber(&bufferF.dia, "\n >> DIA : ", "\n × ERROR. REINGRESE EL DIA.", 1, 31, 1) == 0)
 	{
 		if(utn_getNumber(&bufferF.mes,"\n >> MES : ", "\n × ERROR. REINGRESE EL MES.", 1, 12, 1) == 0)

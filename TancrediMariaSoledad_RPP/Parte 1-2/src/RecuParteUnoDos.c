@@ -41,11 +41,11 @@ int main(void)
 	cargarPerrosHarcode(arrayPerros, &idPerro);
 	cargarDuenioHarcode(arrayDuenio, &idDuenio);
 
-	/*addEstadia(&arrayEstadias[0], &id, "Abel", "1596351203", 7000 ,30000,20,12,2020);
+	addEstadia(&arrayEstadias[0], &id, "Abel", "1596351203", 7000 ,30000,20,12,2020);
 	addEstadia(&arrayEstadias[1], &id, "Carlos", "1123456789", 7002,31000,02,03,1998);
 	addEstadia(&arrayEstadias[2], &id, "Pedro", "48429672", 7000,32000,20,12,2020);
 	addEstadia(&arrayEstadias[3], &id, "Zahira", "1589452301", 7001 ,33000,17,12,2020);
-	addEstadia(&arrayEstadias[4], &id, "Ernesto","48425632", 7002, 34000, 02, 03, 1998);*/
+	addEstadia(&arrayEstadias[4], &id, "Ernesto","48425632", 7002, 34000, 02, 03, 1998);
 	do
 	{
 		opcion = menuEstadia();
@@ -62,6 +62,7 @@ int main(void)
 				{
 					printf("\n »» NO SE REALIZO LA RESERVA.");
 				}
+				systemPause("\n »»»» Presione una tecla para continuar...");
 				break;
 			case 2:
 				if( modificarEstadia(arrayEstadias, CANT_E, arrayPerros,CANT_P, arrayDuenio, CANT_D) == 0)
@@ -73,6 +74,7 @@ int main(void)
 				{
 					printf("\n »» NO SE PUDO REALIZAR LA MODIFICACION. NO EXISTE NINGUNA RESERVA TODAVIA.");
 				}
+				systemPause("\n »»»» Presione una tecla para continuar...");
 				break;
 			case 3:
 				if(darDeBajaEstadia(arrayEstadias, CANT_E, arrayPerros, CANT_P, arrayDuenio, CANT_D) == 0)
@@ -83,6 +85,7 @@ int main(void)
 				{
 					printf("\n »» NO SE DIO DE BAJA.");
 				}
+				systemPause("\n »»»» Presione una tecla para continuar...");
 				break;
 			case 4:
 				if(ordenarEstadia(arrayEstadias, CANT_E) == 0)
@@ -94,21 +97,24 @@ int main(void)
 				{
 					printf("\nAun no se ha reservado la estadia de ningun perrito. ");
 				}
-
+				systemPause("\n »»»» Presione una tecla para continuar...");
 				break;
 			case 5:
 				mostrarListaPerros(arrayPerros, CANT_P);
+				systemPause("\n »»»» Presione una tecla para continuar...");
 				break;
 			case 6:
 				promedioEdadPerritos = promedioEdadPerros(arrayPerros, CANT_P);
 				printf("\n »»» PROMEDIO EDAD DE LOS PERROS: [%.2f]",promedioEdadPerritos);
+				systemPause("\n »»»» Presione una tecla para continuar...");
 				break;
 			case 7:
 				perroConMasEstadias(arrayEstadias, CANT_E, arrayPerros, CANT_P);
+				systemPause("\n »»»» Presione una tecla para continuar...");
 				break;
 			case 8:
 				mostrarPerrosConSusEstadias(arrayPerros, CANT_P, arrayEstadias, CANT_E,arrayDuenio, CANT_D);
-
+				systemPause("\n »»»» Presione una tecla para continuar...");
 				break;
 			case 9:
 				printf("\nFIN DEL PROGRAMA");

@@ -63,6 +63,7 @@ int altaEstadia(EstadiaDiaria* arrayEstadia, int tam, int* id, Perro* arrayPerro
 				if(indexByIdPerro(arrayPerro, tamP,bufferE.idPerro, &iPerro) == 0)
 				{
 				    bufferE.id = *id;
+				    bufferE.isEmpty=1;
                     cartelVistaPrevia();
                     mostrarUnidadEstadia(bufferE,arrayPerro[iPerro], arrayDuenio[iDuenio]);
                     if(utn_getNumber(&rtaSeguir,"\n » DESEA CARGAR LOS DATOS ?"

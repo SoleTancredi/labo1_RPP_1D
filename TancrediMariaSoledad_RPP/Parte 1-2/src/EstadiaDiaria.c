@@ -360,6 +360,18 @@ int indexByIdEstadia(EstadiaDiaria* arrayEstadia, int tam, int id, int* indice)
 }
 
 
+int systemPause(char* message)
+{
+	int ret=-1;
+	if(message!=NULL)
+	{
+		fflush(stdin);
+		printf("\n%s",message);
+		getchar();
+		ret=0;
+	}
+	return ret;
+}
 
 
 
