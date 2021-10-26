@@ -133,16 +133,16 @@ int menuDuenio()
 
 	printf("\n***** MENU ABM DUENIO *****\n");
 
-	if(utn_getNumber(&option, "\nIngrese la opcion que desee realizar: "
-				"\n1.Dar de alta un DUENIO. "
-				"\n2.Dar de Baja un DUENIO. "
-				"\n3.Modificar un DUENIO."
-				"\n4.Listar todos los DUENIOS."
-				"\n5.Salir. "
-				, "\nError. Reingrese la opcion. \n"
+	if(utn_getNumber(&option, "\n --> Ingrese la opcion que desee realizar: "
+				"\n[1] Dar de alta un DUENIO. "
+				"\n[2] Dar de Baja un DUENIO. "
+				"\n[3] Modificar un DUENIO."
+				"\n[4] Listar todos los DUENIOS."
+				"\n[5] Salir. "
+				, "\n × ERROR. Reingrese la opcion. \n"
 				, 1, 5, 1) == 0)
 	{
-		printf("\nUsted ha ingresado la opcion nº %d\n", option);
+		printf("\n » Usted ha ingresado la opcion nº %d\n", option);
 
 	}
 
@@ -178,10 +178,10 @@ int altaDuenio(Duenio* arrayDuenio, int tam, int* id)
 	{
 		i = findEmptyDuenio(arrayDuenio, tam);
 
-		if(i != -1 && utn_nombreOapellido(bufferDuenio.nombre, "\nIngrese el nombre del duenio: ", "\nError. Reingrese el nombre.\n"
-			, TAM_D,1 ) == 0 && utn_nombreOapellido(bufferDuenio.apellido, "\nIngrese el apellido: ", "\nError. Reingrese el apellido.\n", TAM_D, 1) == 0
-			&& utn_telephoneNumber(bufferDuenio.telefono,"\nIngrese el telefono de contacto: "
-					, "\nError. Reingrese el telefono.", tam, 1) == 0)
+		if(i != -1 && utn_nombreOapellido(bufferDuenio.nombre, "\n --> Ingrese el nombre del duenio: ", "\n × ERROR. Reingrese el nombre.\n"
+			, TAM_D,1 ) == 0 && utn_nombreOapellido(bufferDuenio.apellido, "\n --> Ingrese el apellido: ", "\n × ERROR. Reingrese el apellido.\n", TAM_D, 1) == 0
+			&& utn_telephoneNumber(bufferDuenio.telefono,"\n -->Ingrese el telefono de contacto: "
+					, "\n × ERROR. Reingrese el telefono.", tam, 1) == 0)
 		{
 			addDuenio(&arrayDuenio[i], tam, id, bufferDuenio.nombre, bufferDuenio.apellido, bufferDuenio.telefono);
 			retorno = 0;
@@ -205,16 +205,16 @@ int menuModificarDuenio(Duenio* arrayDuenio, int len, int* indice, int* option)
 
 		mostrarListaDuenios(arrayDuenio, len);
 
-		if( utn_getNumber(&idBuscado, "\nIngrese el ID del duenio que desea modificar: ","\nError. Reingrese el ID."
+		if( utn_getNumber(&idBuscado, "\n --> Ingrese el ID del duenio que desea modificar: ","\n × ERROR. Reingrese el ID."
 				, 30000, 60000, 1) == 0 && indexByIdDuenio(arrayDuenio, len, idBuscado, indice) == 0)
 		{
-			if(utn_getNumber(option, "\nIngrese la opcion del dato que desea modificar:"
-					"\n1. NOMBRE."
-					"\n2. APELLIDO."
-					"\n3. NUMERO DE TELEFONO. "
-					"\n4. SALIR. ", "Error. Reingrese la opcion", 1, 4, 1) == 0)
+			if(utn_getNumber(option, "\n --> Ingrese la opcion del dato que desea modificar:"
+					"\n[1] NOMBRE."
+					"\n[2] APELLIDO."
+					"\n[3] NUMERO DE TELEFONO. "
+					"\n[4] SALIR. ", "\n × ERROR. Reingrese la opcion", 1, 4, 1) == 0)
 			{
-				printf("\nUsted ha ingresado la opcion nº %d", *option);
+				printf("\n » Usted ha ingresado la opcion nº %d", *option);
 				retorno = 0;
 
 			}
@@ -222,7 +222,7 @@ int menuModificarDuenio(Duenio* arrayDuenio, int len, int* indice, int* option)
 		}
 		else
 		{
-			printf("\nEl ID ingreado es inexistente.");
+			printf("\n > El ID ingreado es inexistente.");
 		}
 
 	}
@@ -246,35 +246,35 @@ int modificarDuenio(Duenio* arrayDuenio, int len)
 			switch(option)
 			{
 				case 1:
-					if(utn_nombreOapellido(bufferDuenio.nombre,"\nIngrese el nombre del duenio: "
-							, "\nError. Reingrese el nombre.", TAM_D, 1) == 0)
+					if(utn_nombreOapellido(bufferDuenio.nombre,"\n -->Ingrese el nombre del duenio: "
+							, "\n × ERROR. Reingrese el nombre.", TAM_D, 1) == 0)
 					{
-						printf("\nEl nuevo nombre es: %s", bufferDuenio.nombre);
+						printf("\n » El nuevo nombre es: %s", bufferDuenio.nombre);
 						strcpy(arrayDuenio[indice].nombre,bufferDuenio.nombre);
 					}
 					else
 					{
-						printf("\nNo se ha podido realizar la modificacion de manera correcta");
+						printf("\n >> No se ha podido realizar la modificacion de manera correcta");
 					}
 					break;
 				case 2:
-					if(utn_nombreOapellido(bufferDuenio.apellido, "\nIngrese el apellido: "
-							, "\nError. Reingrese el apellido", TAM_D, 1) == 0)
+					if(utn_nombreOapellido(bufferDuenio.apellido, "\n --> Ingrese el apellido: "
+							, "\n × ERROR. Reingrese el apellido", TAM_D, 1) == 0)
 					{
-						printf("\nEl apellido ingresado es: %s", bufferDuenio.apellido);
+						printf("\n » El apellido ingresado es: %s", bufferDuenio.apellido);
 						strcpy(arrayDuenio[indice].apellido, bufferDuenio.apellido);
 					}
 					break;
 				case 3:
-					if(utn_telephoneNumber(bufferDuenio.telefono,"\nIngrese el nuevo telefono de contacto:"
-							,"\nError. Reingrese el numero.", len, 1) == 0)
+					if(utn_telephoneNumber(bufferDuenio.telefono,"\n --> Ingrese el nuevo telefono de contacto:"
+							,"\n × ERROR. Reingrese el numero.", len, 1) == 0)
 					{
-						printf("\nEl telefono de contacto ingresado es: %s", bufferDuenio.telefono);
+						printf("\n » El telefono de contacto ingresado es: %s", bufferDuenio.telefono);
 						strcpy(arrayDuenio[indice].telefono, bufferDuenio.telefono);
 					}
 					else
 					{
-						printf("\nNo se ha podido realizar la modificacion de manera correcta");
+						printf("\n >> No se ha podido realizar la modificacion de manera correcta");
 					}
 					break;
 				case 4:
@@ -302,7 +302,7 @@ int darDeBajaDuenio(Duenio* arrayDuenio, int len)
 
 		mostrarListaDuenios(arrayDuenio, len);
 
-		if( utn_getNumber(&id, "\nIngrese el ID del perro que desea eliminar: ","\nError. Reingrese el ID."
+		if( utn_getNumber(&id, "\n --> Ingrese el ID del perro que desea eliminar: ","\n × ERROR. Reingrese el ID."
 					, 30000, 60000, 1) == 0 && indexByIdDuenio(arrayDuenio, len, id, &indice) == 0)
 
 		{

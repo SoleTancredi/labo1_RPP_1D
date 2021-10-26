@@ -67,8 +67,7 @@ int main(void)
 			case 2:
 				if( modificarEstadia(arrayEstadias, CANT_E, arrayPerros,CANT_P, arrayDuenio, CANT_D) == 0)
 				{
-					//errorprintf("\n ");
-					//mostrarListaEstadias(arrayEstadias, CANT_E, arrayPerros, CANT_P, arrayDuenio, CANT_D);
+					mostrarListaEstadias(arrayEstadias, CANT_E, arrayPerros, CANT_P, arrayDuenio, CANT_D);
 				}
 				else
 				{
@@ -95,7 +94,7 @@ int main(void)
 				}
 				else
 				{
-					printf("\nAun no se ha reservado la estadia de ningun perrito. ");
+					printf("\n »» TODAVIA NO HAY NINGUNA ESTADIA RESERVADA. ");
 				}
 				systemPause("\n »»»» Presione una tecla para continuar...");
 				break;

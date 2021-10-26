@@ -172,9 +172,9 @@ int altaPerrito(Perro* arrayPerrito, int tam, int* id)
 	{
 		i = findEmpty(arrayPerrito, tam);
 
-		if(i != -1 && utn_nombreOapellido(bufferPerrito.nombre, "\nIngrese el nombre del perro: ", "\nError. Reingrese el nombre.\n"
-			, TAM,1 ) == 0 && utn_nombreOapellido(bufferPerrito.raza, "\nIngrese la raza: ", "\nError. Reingrese la raza.\n", TAM, 1) == 0
-			&& utn_getNumber(&bufferPerrito.edad, "\nIngrese la edad: ", "\nError. Reingrese la edad.\n", 1,50, 1) == 0)
+		if(i != -1 && utn_nombreOapellido(bufferPerrito.nombre, "\n --> INGRESE EL NOMBRE DEL PERRO: ", "\n × ERROR. Reingrese el nombre.\n"
+			, TAM,1 ) == 0 && utn_nombreOapellido(bufferPerrito.raza, "\n --> INGRESE LA RAZA: ", "\n × ERROR Reingrese la raza.\n", TAM, 1) == 0
+			&& utn_getNumber(&bufferPerrito.edad, "\n --> INGRESE LA EDAD: ", "\n × ERROR Reingrese la edad.\n", 1,50, 1) == 0)
 		{
 			addPerrito(&arrayPerrito[i], tam, id, bufferPerrito.nombre, bufferPerrito.raza, bufferPerrito.edad);
 			retorno = 0;
@@ -237,14 +237,14 @@ int menuModificar(Perro* arrayPerritos, int len, int* indice, int* option)
 
 		mostrarListaPerros(arrayPerritos, len);
 
-		if( utn_getNumber(&idBuscado, "\nIngrese el ID del perro que desea modificar: ","\nError. Reingrese el ID."
+		if( utn_getNumber(&idBuscado, "\n --> Ingrese el ID del perro que desea modificar: ","\n × ERROR. Reingrese el ID."
 				, 7000, 10000, 1) == 0 && indexByIdPerro(arrayPerritos, len, idBuscado, indice) == 0)
 		{
-			if(utn_getNumber(option, "\nIngrese la opcion del dato que desea modificar:"
-					"\n1. NOMBRE."
-					"\n2. RAZA."
-					"\n3. EDAD. "
-					"\n4. SALIR. ", "Error. Reingrese la opcion", 1, 4, 1) == 0)
+			if(utn_getNumber(option, "\n -->Ingrese la opcion del dato que desea modificar:"
+					"\n[1] NOMBRE."
+					"\n[2] RAZA."
+					"\n[3] EDAD. "
+					"\n[4] SALIR. ", " × ERROR. Reingrese la opcion", 1, 4, 1) == 0)
 			{
 				printf("\nUsted ha ingresado la opcion nº %d", *option);
 				retorno = 0;
@@ -254,7 +254,7 @@ int menuModificar(Perro* arrayPerritos, int len, int* indice, int* option)
 		}
 		else
 		{
-			printf("\nEl ID ingreado es inexistente.");
+			printf("\n > El ID ingreado es inexistente.");
 		}
 
 	}
@@ -344,30 +344,30 @@ int modificarPerrito(Perro* arrayPerritos, int len)
 			switch(option)
 			{
 				case 1:
-					if(utn_nombreOapellido(bufferPerrito.nombre,"\nIngrese el nombre: "
-							, "\nError. Reingrese el nombre.", TAM, 1) == 0)
+					if(utn_nombreOapellido(bufferPerrito.nombre,"\n --> Ingrese el nombre: "
+							, "\n × ERROR. Reingrese el nombre.", TAM, 1) == 0)
 					{
-						printf("\nEl nuevo nombre es: %s", bufferPerrito.nombre);
+						printf("\n »» El nuevo nombre es: %s", bufferPerrito.nombre);
 						strcpy(arrayPerritos[indice].nombre,bufferPerrito.nombre);
 					}
 					else
 					{
-						printf("\nNo se ha podido realizar la modificacion de manera correcta");
+						printf("\n >> No se ha podido realizar la modificacion de manera correcta");
 					}
 					break;
 				case 2:
 					if(utn_nombreOapellido(bufferPerrito.raza, "\nIngrese la raza: "
-							, "\nError. Reingrese la raza", TAM, 1) == 0)
+							, "\n × ERROR. Reingrese la raza", TAM, 1) == 0)
 					{
-						printf("\nLa nueva raza es: %s", bufferPerrito.raza);
+						printf("\n »» La nueva raza es: %s", bufferPerrito.raza);
 						strcpy(arrayPerritos[indice].raza, bufferPerrito.raza);
 					}
 					break;
 				case 3:
 					if(utn_getNumber(&bufferPerrito.edad, "\nIngrese la edad: "
-							, "\nError. Reingrese la edad.", 1, 50, 1) == 0)
+							, "\n × ERROR. Reingrese la edad.", 1, 50, 1) == 0)
 					{
-						printf("\nLa nueva edad es: %d", bufferPerrito.edad);
+						printf("\n »» La nueva edad es: %d", bufferPerrito.edad);
 						arrayPerritos[indice].edad = bufferPerrito.edad;
 					}
 					break;
@@ -397,16 +397,16 @@ int menuPerrito()
 
 	printf("\n***** MENU ABM PERRITO *****\n");
 
-	if(utn_getNumber(&option, "\nIngrese la opcion que desee realizar: "
-				"\n1.Dar de alta un perrito. "
-				"\n2.Dar de Baja un perrito. "
-				"\n3.Modificar un perrito."
-				"\n4.Listar todos los perritos."
-				"\n5.Salir. "
-				, "\nError. Reingrese la opcion. \n"
+	if(utn_getNumber(&option, "\n --> Ingrese la opcion que desee realizar: "
+				"\n[1] Dar de alta un perrito. "
+				"\n[2] Dar de Baja un perrito. "
+				"\n[3] Modificar un perrito."
+				"\n[4] Listar todos los perritos."
+				"\n[5] Salir. "
+				, "\n × ERROR. Reingrese la opcion. \n"
 				, 1, 5, 1) == 0)
 	{
-		printf("\nUsted ha ingresado la opcion nº %d\n", option);
+		printf("\n » Usted ha ingresado la opcion nº %d\n", option);
 
 	}
 
@@ -434,7 +434,7 @@ int darDeBajaPerrito(Perro* arrayPerritos, int len)
 
 		mostrarListaPerros(arrayPerritos, len);
 
-		if( utn_getNumber(&id, "\nIngrese el ID del perro que desea eliminar: ","\nError. Reingrese el ID."
+		if( utn_getNumber(&id, "\n --> Ingrese el ID del perro que desea eliminar: ","\n × ERROR. Reingrese el ID."
 					, 7000, 10000, 1) == 0 && indexByIdPerro(arrayPerritos, len, id, &indice) == 0)
 
 		{
