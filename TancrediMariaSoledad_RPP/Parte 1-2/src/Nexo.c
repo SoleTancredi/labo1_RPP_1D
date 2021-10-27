@@ -318,7 +318,7 @@ int darDeBajaEstadia(EstadiaDiaria* arrayEstadia, int tam, Perro* arrayPerros, i
 
 	if(arrayEstadia!= NULL && arrayPerros != NULL && arrayDuenio != NULL)
 	{
-		printf("\n***** DAR DE BAJA UNA ESTADIA *****\n");
+		printf("\n\t\t\t  ***** DAR DE BAJA UNA ESTADIA *****\n");
 
 		mostrarListaEstadias(arrayEstadia, tam, arrayPerros, tamPerro, arrayDuenio, tamDuenio);
 

@@ -30,7 +30,7 @@ int cargarFecha(Fecha* fecha)
 	{
 		if(utn_getNumber(&bufferF.mes,"\n >> MES : ", "\n × ERROR. REINGRESE EL MES.", 1, 12, 1) == 0)
 		{
-			if(utn_getNumber(&bufferF.anio,"\n >> ANIO : ", "\n × ERROR. REINGRESE EL ANIO.", 1990, 2022, 1) == 0)
+			if(utn_getNumber(&bufferF.anio,"\n >> ANIO : ", "\n × ERROR. REINGRESE EL ANIO.", 2021, 2022, 1) == 0)
 			{
 				*fecha = bufferF;
 				retorno = 0;
