@@ -199,8 +199,6 @@ int modificarEstadia(EstadiaDiaria* arrayEstadia, int tam, Perro* arrayPerritos,
 
 			}while(option != 3);
 		}
-
-
 	}
 
 	return retorno;
@@ -472,71 +470,74 @@ int perroConMasEstadias(EstadiaDiaria* arrayEstadias, int tamE, Perro* arrayPerr
 				}
 			}
 		}
-
-		printf("\n >>> CANTIDAD DE ESTADIAS DE CADA PERRITO: \n");
-		printf("\n  »»» LOBO   [%d]", contLobo);
-		printf("\n  »»» SHEILA [%d]", contSheila);
-		printf("\n  »»» REINA  [%d]", contReina);
-
-		if(contLobo > contSheila && contLobo > contReina)
+		if(contLobo != 0 || contReina!=0|| contSheila!=0)
 		{
-			if(contLobo == contSheila)
+			printf("\n >>> CANTIDAD DE ESTADIAS DE CADA PERRITO: \n");
+			printf("\n  »»» LOBO   [%d]", contLobo);
+			printf("\n  »»» SHEILA [%d]", contSheila);
+			printf("\n  »»» REINA  [%d]", contReina);
+			if(contLobo > contSheila && contLobo > contReina)
 			{
-				printf("\n\n »»»» LOS PERRITOS CON MAS ESTADIAS SON: Lobo y %s ««««", arrayPerro[1].nombre);
-			}
-			else
-			{
-				if(contLobo == contReina)
+				if(contLobo == contSheila)
 				{
-					printf("\n\n »»»» LOS PERRITOS CON MAS ESTADIAS SON: Lobo y %s ««««", arrayPerro[2].nombre);
+					printf("\n\n »»»» LOS PERRITOS CON MAS ESTADIAS SON: Lobo y %s ««««", arrayPerro[1].nombre);
 				}
 				else
 				{
-					printf("\n\n »»»» EL PERRITO CON MAS ESTADIAS ES LOBO ««««");
-				}
-			}
-		}
-		else
-		{
-			if(contSheila > contLobo && contSheila > contReina)
-			{
-				if(contSheila == contLobo)
-				{
-					printf("\n\n »»»» LOS PERRITOS CON MAS ESTADIAS SON: Sheila y %s ««««", arrayPerro[0].nombre);
-				}
-				else
-				{
-					if(contSheila == contReina)
+					if(contLobo == contReina)
 					{
-						printf("\n\n »»»» LOS PERRITOS CON MAS ESTADIAS SON: Sheila y %s ««««", arrayPerro[2].nombre);
+						printf("\n\n »»»» LOS PERRITOS CON MAS ESTADIAS SON: Lobo y %s ««««", arrayPerro[2].nombre);
 					}
 					else
 					{
-						printf("\n\n »»»» EL PERRITO CON MAS ESTADIAS ES SHEILA ««««");
+						printf("\n\n »»»» EL PERRITO CON MAS ESTADIAS ES LOBO ««««");
 					}
 				}
-
 			}
 			else
 			{
-				if(contReina == contLobo)
+				if(contSheila > contLobo && contSheila > contReina)
 				{
-					printf("\n\n »»»» LOS PERRITOS CON MAS ESTADIAS SON: Reina y %s ««««", arrayPerro[0].nombre);
-				}
-				else
-				{
-					if(contReina == contSheila)
+					if(contSheila == contLobo)
 					{
-						printf("\n\n »»»» LOS PERRITOS CON MAS ESTADIAS SON: Reina y %s ««««", arrayPerro[1].nombre);
+						printf("\n\n »»»» LOS PERRITOS CON MAS ESTADIAS SON: Sheila y %s ««««", arrayPerro[0].nombre);
 					}
 					else
 					{
-						printf("\n\n »»»» EL PERRITO CON MAS ESTADIAS ES REINA ««««");
+						if(contSheila == contReina)
+						{
+							printf("\n\n »»»» LOS PERRITOS CON MAS ESTADIAS SON: Sheila y %s ««««", arrayPerro[2].nombre);
+						}
+						else
+						{
+							printf("\n\n »»»» EL PERRITO CON MAS ESTADIAS ES SHEILA ««««");
+						}
+					}
+
+				}
+				else
+				{
+					if(contReina == contLobo)
+					{
+						printf("\n\n »»»» LOS PERRITOS CON MAS ESTADIAS SON: Reina y %s ««««", arrayPerro[0].nombre);
+					}
+					else
+					{
+						if(contReina == contSheila)
+						{
+							printf("\n\n »»»» LOS PERRITOS CON MAS ESTADIAS SON: Reina y %s ««««", arrayPerro[1].nombre);
+						}
+						else
+						{
+							printf("\n\n »»»» EL PERRITO CON MAS ESTADIAS ES REINA ««««");
+						}
 					}
 				}
 			}
-		}
-		retorno = 0;
+			retorno = 0;
+
+	}
+
 }
 	return retorno;
 }
