@@ -46,48 +46,50 @@ int altaEstadia(EstadiaDiaria* arrayEstadia, int tam, int* id, Perro* arrayPerro
 		i = findEmptyEstadia(arrayEstadia, tam);
 		cartelMostrarDuenio();
 		mostrarListaDuenios(arrayDuenio, tam);
-		if(utn_getNumber(&bufferE.idDuenio, "\n --> SELECCIONE UN DUENIO MEDIANTE ID:  ", "\nError.Reingrese.", 30000, 60000, 1) == 0)
+		if(utn_getNumber(&bufferE.idDuenio, "\n --> SELECCIONE UN DUENIO MEDIANTE ID:  ", "\n × ERROR.Reingrese.", 30000, 60000, 1) == 0)
 		{
 			if(indexByIdDuenio(arrayDuenio, tamD, bufferE.idDuenio,&iDuenio) == 0)
 			{
 				strcpy(bufferE.nombreDuenio,arrayDuenio[iDuenio].nombre);
 				strcpy(bufferE.telefonoContacto,arrayDuenio[iDuenio].telefono);
+				if(i != -1 && cargarFecha(&bufferE.fechaEstadia) == 0 )
+				{
+					mostrarListaPerros(arrayPerro, tamP);
+					if(utn_getNumber(&bufferE.idPerro, "\n --> SELECCIONE UN PERRO MEDIANTE ID: ", "\n × ERROR.Reingrese.", 7000, 10000, 1) == 0)
+					{
+						if(indexByIdPerro(arrayPerro, tamP,bufferE.idPerro, &iPerro) == 0)
+						{
+							bufferE.id = *id;
+							bufferE.isEmpty=1;
+							cartelVistaPrevia();
+							mostrarUnidadEstadia(bufferE,arrayPerro[iPerro], arrayDuenio[iDuenio]);
+							if(utn_getNumber(&rtaSeguir,"\n » DESEA CARGAR LOS DATOS ?"
+									"\n  [1] SI "
+									"\n  [2] NO ", "\n × ERROR.",1,2, 1) == 0)
+							{
+								if(rtaSeguir == 1)
+								{
+									if(addEstadia(&arrayEstadia[i], id,bufferE.nombreDuenio ,bufferE.telefonoContacto , bufferE.idPerro,bufferE.idDuenio, bufferE.fechaEstadia.dia, bufferE.fechaEstadia.mes, bufferE.fechaEstadia.anio) == 0)
+									{
+										printf("\n »»» CARGA COMPLETA «««");
+										retorno = 0;
+									}
+								}
+							}
+						}
+						else
+						{
+							printf("\n »» El ID ingresado no existe.");
+						}
+					}
 			}
 			else
 			{
-				printf("\nEl ID ingresado no existe.");
+				printf("\n »» El ID ingresado no existe.");
 			}
+
 		}
-		if(i != -1 && cargarFecha(&bufferE.fechaEstadia) == 0 )
-		{
-			mostrarListaPerros(arrayPerro, tamP);
-			if(utn_getNumber(&bufferE.idPerro, "\n --> SELECCIONE UN PERRO MEDIANTE ID: ", "\nError.Reingrese.", 7000, 10000, 1) == 0)
-			{
-				if(indexByIdPerro(arrayPerro, tamP,bufferE.idPerro, &iPerro) == 0)
-				{
-				    bufferE.id = *id;
-				    bufferE.isEmpty=1;
-                    cartelVistaPrevia();
-                    mostrarUnidadEstadia(bufferE,arrayPerro[iPerro], arrayDuenio[iDuenio]);
-                    if(utn_getNumber(&rtaSeguir,"\n » DESEA CARGAR LOS DATOS ?"
-                    		"\n  [1] SI "
-                    		"\n  [2] NO ", "\nError.",1,2, 1) == 0)
-                    {
-                    	if(rtaSeguir == 1)
-                    	{
-                    		if(addEstadia(&arrayEstadia[i], id,bufferE.nombreDuenio ,bufferE.telefonoContacto , bufferE.idPerro,bufferE.idDuenio, bufferE.fechaEstadia.dia, bufferE.fechaEstadia.mes, bufferE.fechaEstadia.anio) == 0)
-							{
-								printf("\n »»» CARGA COMPLETA «««");
-								retorno = 0;
-							}
-                    	}
-                    }
-				}
-				else
-				{
-					printf("\nEl ID ingresado no existe.");
-				}
-			}
+
 		}
 	}
 	return retorno;
@@ -183,12 +185,12 @@ int modificarEstadia(EstadiaDiaria* arrayEstadia, int tam, Perro* arrayPerritos,
 							indexByIdDuenio(arrayDuenio, tamDuenio,arrayEstadia[indice].idDuenio, &indiceDuenio);
 							cartelEstadiaModificada();
 							mostrarUnidadEstadia(arrayEstadia[indice], arrayPerritos[indicePerro], arrayDuenio[indiceDuenio]);
-							printf("\n »»» Saliendo al menu principal");
+							printf("\n »»» Saliendo...");
 						}
 						else
 						{
 							printf("\n »» NO HUBO CAMBIOS.\n");
-							printf("\n »»» Saliendo al menu principal");
+							printf("\n »»» Saliendo...");
 						}
 						break;
 				}

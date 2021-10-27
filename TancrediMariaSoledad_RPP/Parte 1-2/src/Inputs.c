@@ -33,7 +33,7 @@ static int esCifra(char* cadena);
 static int ArrayIsEmpty(char* array)
 {
 	int resultado=-1;
-	if(array!= NULL && strlen(array)>1)
+	if(array!= NULL && strlen(array)>0)
 	{
 		for(int i = 0; i < sizeof(array); i++)
 		{
@@ -61,23 +61,29 @@ static int ArrayIsEmpty(char* array)
 static int myGets(char* cadena, int longitud)
 {
 	int retorno = -1;
-	char bufferCadena[4016];
-
-	if(cadena != NULL)
+	char bufferCadena[4096];
+	int len;
+	if(cadena != NULL && longitud>0)
 	{
 		__fpurge(stdin);
-		fgets(bufferCadena,longitud, stdin);
-
-		if(ArrayIsEmpty(bufferCadena)==0)
+		if(fgets(bufferCadena,sizeof(bufferCadena), stdin)!=NULL)
 		{
-			bufferCadena[strlen(bufferCadena)-1]= '\0' ;
-			strcpy(cadena, bufferCadena);
-			retorno = 0;
+			len=strlen(bufferCadena);
+
+			if(bufferCadena[len-1]== '\n')
+			{
+				bufferCadena[len-1]= '\0' ;
+			}
+			if(strlen(bufferCadena)<=longitud && ArrayIsEmpty(bufferCadena)!=-1)
+			{
+				strcpy(cadena, bufferCadena);
+				retorno = 0;
+			}
 		}
 	}
+
 	 return retorno;
 }
-
 /**
  * @fn int esNumerica(char*)
  * @brief se encarga de recorrer el array hasta el \0 y verifica posicion a posicion
@@ -119,7 +125,7 @@ static int esNumerica(char* cadena)
 static int getInt(int* pResultado)
 {
 	int retorno=-1;
-	char bufferInt[4096];
+	char bufferInt[4095];
 
 	if(myGets(bufferInt, sizeof(bufferInt)) == 0 && esNumerica(bufferInt))
 	{
@@ -407,17 +413,16 @@ int utn_nombreOapellido(char* string, char* mensaje, char* mensajeError, int tam
 int utn_telephoneNumber(char* string, char* mensaje, char* mensajeError, int tam, int reintentos)
 {
 	int retorno = -1;
-	char buffer[4096];
+	char buffer[tam];
 	int retornoMyGets;
 	int retornoEsCifra;
 
-	if(string != NULL && mensaje != NULL && mensajeError != NULL)
+	if(string != NULL && mensaje != NULL && mensajeError != NULL && tam >0)
 	{
 		do
 		{
 		   printf("%s\n", mensaje);
-
-		   retornoMyGets = myGets(buffer, sizeof(buffer));
+		   retornoMyGets = myGets(buffer, tam);
 		   retornoEsCifra = esCifra(buffer);
 
 			if(retornoMyGets == 0 && retornoEsCifra == 1 )

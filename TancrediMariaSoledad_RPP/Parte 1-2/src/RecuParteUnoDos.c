@@ -67,13 +67,13 @@ int main(void)
 			case 2:
 				if( modificarEstadia(arrayEstadias, CANT_E, arrayPerros,CANT_P, arrayDuenio, CANT_D) == 0)
 				{
-					mostrarListaEstadias(arrayEstadias, CANT_E, arrayPerros, CANT_P, arrayDuenio, CANT_D);
+					//ver
 				}
 				else
 				{
-					printf("\n »» NO SE PUDO REALIZAR LA MODIFICACION. NO EXISTE NINGUNA RESERVA TODAVIA.");
+					printf("\n »» NO SE PUDO REALIZAR LA MODIFICACION.");
 				}
-				systemPause("\n »»»» Presione una tecla para continuar...");
+				systemPause(" »»»» Presione una tecla para continuar...");
 				break;
 			case 3:
 				if(darDeBajaEstadia(arrayEstadias, CANT_E, arrayPerros, CANT_P, arrayDuenio, CANT_D) == 0)
@@ -116,7 +116,7 @@ int main(void)
 				systemPause("\n »»»» Presione una tecla para continuar...");
 				break;
 			case 9:
-				printf("\nFIN DEL PROGRAMA");
+				printf("\n »»»»»» FIN DEL PROGRAMA «««««« ");
 				break;
 		}
 
