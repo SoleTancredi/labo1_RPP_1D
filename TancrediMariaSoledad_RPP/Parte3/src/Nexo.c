@@ -239,6 +239,7 @@ void mostrarPerrosConSusEstadias(Perro* arrayPerro, int tamPerro, EstadiaDiaria*
 	}
 }
 
+
 /**
  * @fn int mostrarUnidadEstadia(EstadiaDiaria, Perro, Duenio)
  * @brief muestra una sola estadia
@@ -437,6 +438,18 @@ void cartelMostrarEstadiaPorPerro(Perro unidadPerro)
 
 }
 
+void cartelMostrarEstadiasLucias(Duenio unidadDuenio)
+{
+    if(unidadDuenio.isEmpty == 1)
+    {
+    	printf("\n\t\t\t\t ESTADIAS DE »» [%s] «« ", unidadDuenio.nombre);
+		printf("\n________________________________________________________________________________________________\n");
+		printf("\n%-15s %-15s %-15s %-15s %-15s %-15s\n","ID ESTADIA","NOMBRE DUEÑO"," TEL. CONTACTO "," NOMBRE PERRO","RAZA PERRO","FECHA DE INGRESO");
+		printf("________________________________________________________________________________________________\n");
+    }
+
+}
+
 /**
  * @fn int perroConMasEstadias(EstadiaDiaria*, int, Perro*, int)
  * @brief muestra la cantidad de estadias por cada perro, y el perro con mayor cantidad de estadias
@@ -550,6 +563,32 @@ int perroConMasEstadias(EstadiaDiaria* arrayEstadias, int tamE, Perro* arrayPerr
 	return retorno;
 }
 
+void mostrarLuciasConSusEstadias(EstadiaDiaria* arrayEstadias, int tamE, Duenio* arrayDuenios, int tamD, Perro* arrayPerro, int tamP)
+{
+	//int retorno = -1;
+	int iPerro;
+
+	if(arrayEstadias != NULL && arrayDuenios != NULL && arrayPerro != NULL)
+	{
+		for(int i = 0; i < tamD; i++)
+		{
+			cartelMostrarEstadiasLucias(arrayDuenios[i]);
+
+            for(int j = 0; j < tamE; j++)
+            {
+               if(strcmp(arrayDuenios[i].nombre, arrayEstadias[j].nombreDuenio) == 0)
+               {
+                  indexByIdPerro(arrayPerro, tamP, arrayEstadias[j].idPerro, &iPerro);
+                  mostrarUnidadEstadia(arrayEstadias[j], arrayPerro[iPerro], arrayDuenios[i]);
+
+               }
+
+            }
+		}
+	}
+
+}
+
 int dueniosAlan(EstadiaDiaria* arrayEstadias, int tamE, Duenio* arrayDuenio, int tamD)
 {
 	int contAlan=0;
@@ -566,6 +605,8 @@ int dueniosAlan(EstadiaDiaria* arrayEstadias, int tamE, Duenio* arrayDuenio, int
 	}
 	return contAlan;
 }
+
+
 
 
 

@@ -157,8 +157,15 @@ int main(void)
 						printf("\n »»» CANTIDAD DE DUENIOS CON NOMBRE > ALAN <: [%d]",cantidadDueniosAlan);
 					}
 				}
+				else
+				{
+					printf("\n »» TODAVIA NO HAY NINGUNA ESTADIA RESERVADA. ");
+				}
+				systemPause("\n »»»» Presione enter para continuar...");
 			  break;
 			case 11:
+                mostrarLuciasConSusEstadias(arrayEstadias, CANT_E, arrayDuenio, CANT_D, arrayPerros, CANT_P);
+                printf("\nESTADIAS DE LUCIA : ");
 				break;
 			case 12:
 				break;
