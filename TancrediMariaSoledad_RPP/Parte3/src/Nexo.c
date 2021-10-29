@@ -550,6 +550,23 @@ int perroConMasEstadias(EstadiaDiaria* arrayEstadias, int tamE, Perro* arrayPerr
 	return retorno;
 }
 
+int dueniosAlan(EstadiaDiaria* arrayEstadias, int tamE, Duenio* arrayDuenio, int tamD)
+{
+	int contAlan=0;
+
+	if(arrayEstadias != NULL && arrayDuenio != NULL)
+	{
+		for(int i = 0; i < tamE; i++)
+		{
+			if(strcmp(arrayEstadias[i].nombreDuenio, "Alan") == 0)
+			{
+				contAlan++;
+			}
+		}
+	}
+	return contAlan;
+}
+
 
 
 

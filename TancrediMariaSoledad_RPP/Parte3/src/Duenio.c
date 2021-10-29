@@ -52,7 +52,7 @@ void cargarDuenioHarcode(Duenio* arrayDuenio, int* id)
 			{36000, "Martin", "Ramirez", "48429683",1}
 		};
 
-		for(int i = 0; i < 5; i++)
+		for(int i = 0; i < 7; i++)
 		{
 			arrayDuenio[i] = bufferDuenio[i];
 			(*id)++;

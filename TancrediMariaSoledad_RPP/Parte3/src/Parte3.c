@@ -33,6 +33,7 @@ int main(void)
 	int flagReserva = 0;
 	int contadorEstadias = 0;
 	int opcion;
+	int cantidadDueniosAlan;
 	float promedioEdadPerritos;
 
 	inicializarEstadia(arrayEstadias, CANT_E);
@@ -144,7 +145,14 @@ int main(void)
 		        systemPause("\n »»»» Presione enter para continuar...");
 				break;
 			case 10:
-
+				if(dueniosAlan(arrayEstadias, CANT_E, arrayDuenio, CANT_D) == 0)
+				{
+		        	printf("\n »» NO HAY DUENIOS INGRESADOS CON EL NOMBRE > ALAN <.");
+				}
+				else
+				{
+					printf("\n »»» CANTIDAD DE DUENIOS CON NOMBRE > ALAN <: [%d].",&cantidadDueniosAlan);
+				}
 			  break;
 			case 11:
 				break;

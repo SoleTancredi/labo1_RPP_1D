@@ -27,5 +27,6 @@ void cartelEstadiaModificada();
 void cartelVistaPreviaPerroIngresado();
 void cartelMostrarEstadiaPorPerro(Perro unidadPerro);
 int perroConMasEstadias(EstadiaDiaria* arrayEstadias, int tamE, Perro* arrayPerro, int tamP);
+int dueniosAlan(EstadiaDiaria* arrayEstadias, int tamE, Duenio* arrayDuenio, int tamD);
 
 #endif /* NEXO_H_ */
