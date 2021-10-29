@@ -561,28 +561,36 @@ int perroConMasEstadias(EstadiaDiaria* arrayEstadias, int tamE, Perro* arrayPerr
 	return retorno;
 }
 
-void mostrarLuciasConSusEstadias(EstadiaDiaria* arrayEstadias, int tamE, Duenio* arrayDuenios, int tamD, Perro* arrayPerro, int tamP)
+int mostrarLuciasConSusEstadias(EstadiaDiaria* arrayEstadias, int tamE, Duenio* arrayDuenios, int tamD, Perro* arrayPerro, int tamP)
 {
-	//int retorno = -1;
+	int retorno = -1;
 	int iPerro;
 	int iDuenio;
+	int flagCartel = 0;
 
 	if(arrayEstadias != NULL && arrayDuenios != NULL && arrayPerro != NULL)
 	{
 		for(int i = 0; i < tamE; i++)
 		{
+
 			if(strcmp(arrayEstadias[i].nombreDuenio, "Lucia")== 0)
 			{
 				if(arrayEstadias[i].fechaEstadia.dia > 15 && arrayEstadias[i].fechaEstadia.mes == 11 && arrayEstadias[i].fechaEstadia.anio == 2021)
 				{
+					if(flagCartel == 0)
+					{
+						cartelMostrarEstadiasLucias();
+						flagCartel = 1;
+					}
+					 retorno = 0;
 					 indexByIdPerro(arrayPerro, tamP, arrayEstadias[i].idPerro, &iPerro);
 					 indexByIdDuenio(arrayDuenios, tamD, arrayEstadias[i].idDuenio, &iDuenio);
-					 cartelMostrarEstadiasLucias();
 					 mostrarUnidadEstadia(arrayEstadias[i], arrayPerro[iPerro], arrayDuenios[iDuenio]);
 				}
 			}
 		}
 	}
+	return retorno;
 }
 
 int dueniosAlan(EstadiaDiaria* arrayEstadias, int tamE, Duenio* arrayDuenio, int tamD)

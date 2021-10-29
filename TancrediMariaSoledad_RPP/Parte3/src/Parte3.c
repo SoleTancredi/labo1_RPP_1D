@@ -164,10 +164,21 @@ int main(void)
 				systemPause("\n »»»» Presione enter para continuar...");
 			  break;
 			case 11:
-                mostrarLuciasConSusEstadias(arrayEstadias, CANT_E, arrayDuenio, CANT_D, arrayPerros, CANT_P);
+				if(flagReserva == 1 && contadorEstadias > 0)
+				{
+				   if(mostrarLuciasConSusEstadias(arrayEstadias, CANT_E, arrayDuenio, CANT_D, arrayPerros, CANT_P) != 0)
+				   {
+					   printf("\n »» NO HAY DUENIOS INGRESADOS CON EL NOMBRE > LUCIA <.");
+				   }
+				}
+				else
+				{
+					printf("\n »» TODAVIA NO HAY NINGUNA ESTADIA RESERVADA. ");
+				}
                 systemPause("\n »»»» Presione enter para continuar...");
 				break;
 			case 12:
+				printf("\n »»»»»» FIN DEL PROGRAMA «««««« ");
 				break;
 		}
 
