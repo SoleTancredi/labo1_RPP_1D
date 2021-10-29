@@ -438,15 +438,13 @@ void cartelMostrarEstadiaPorPerro(Perro unidadPerro)
 
 }
 
-void cartelMostrarEstadiasLucias(Duenio unidadDuenio)
+void cartelMostrarEstadiasLucias()
 {
-    if(unidadDuenio.isEmpty == 1)
-    {
-    	printf("\n\t\t\t\t ESTADIAS DE »» [%s] «« ", unidadDuenio.nombre);
-		printf("\n________________________________________________________________________________________________\n");
-		printf("\n%-15s %-15s %-15s %-15s %-15s %-15s\n","ID ESTADIA","NOMBRE DUEÑO"," TEL. CONTACTO "," NOMBRE PERRO","RAZA PERRO","FECHA DE INGRESO");
-		printf("________________________________________________________________________________________________\n");
-    }
+
+	printf("\n\t\t\t\t ESTADIAS DE »» [LUCIA] «« ");
+	printf("\n________________________________________________________________________________________________\n");
+	printf("\n%-15s %-15s %-15s %-15s %-15s %-15s\n","ID ESTADIA","NOMBRE DUEÑO"," TEL. CONTACTO "," NOMBRE PERRO","RAZA PERRO","FECHA DE INGRESO");
+	printf("________________________________________________________________________________________________\n");
 
 }
 
@@ -578,13 +576,13 @@ void mostrarLuciasConSusEstadias(EstadiaDiaria* arrayEstadias, int tamE, Duenio*
 				if(arrayEstadias[i].fechaEstadia.dia > 15 && arrayEstadias[i].fechaEstadia.mes == 11 && arrayEstadias[i].fechaEstadia.anio == 2021)
 				{
 					 indexByIdPerro(arrayPerro, tamP, arrayEstadias[i].idPerro, &iPerro);
-					 indexByIdDuenio(arrayDuenios, tamD, arrayEstadias[i], &iDuenio);
+					 indexByIdDuenio(arrayDuenios, tamD, arrayEstadias[i].idDuenio, &iDuenio);
 					 cartelMostrarEstadiasLucias();
 					 mostrarUnidadEstadia(arrayEstadias[i], arrayPerro[iPerro], arrayDuenios[iDuenio]);
 				}
 			}
 		}
-
+	}
 }
 
 int dueniosAlan(EstadiaDiaria* arrayEstadias, int tamE, Duenio* arrayDuenio, int tamD)
@@ -600,9 +598,12 @@ int dueniosAlan(EstadiaDiaria* arrayEstadias, int tamE, Duenio* arrayDuenio, int
 				contAlan++;
 			}
 		}
+
 	}
 	return contAlan;
 }
+
+
 
 
 
