@@ -567,25 +567,23 @@ void mostrarLuciasConSusEstadias(EstadiaDiaria* arrayEstadias, int tamE, Duenio*
 {
 	//int retorno = -1;
 	int iPerro;
+	int iDuenio;
 
 	if(arrayEstadias != NULL && arrayDuenios != NULL && arrayPerro != NULL)
 	{
-		for(int i = 0; i < tamD; i++)
+		for(int i = 0; i < tamE; i++)
 		{
-			cartelMostrarEstadiasLucias(arrayDuenios[i]);
-
-            for(int j = 0; j < tamE; j++)
-            {
-               if(strcmp(arrayDuenios[i].nombre, arrayEstadias[j].nombreDuenio) == 0)
-               {
-                  indexByIdPerro(arrayPerro, tamP, arrayEstadias[j].idPerro, &iPerro);
-                  mostrarUnidadEstadia(arrayEstadias[j], arrayPerro[iPerro], arrayDuenios[i]);
-
-               }
-
-            }
+			if(strcmp(arrayEstadias[i].nombreDuenio, "Lucia")== 0)
+			{
+				if(arrayEstadias[i].fechaEstadia.dia > 15 && arrayEstadias[i].fechaEstadia.mes == 11 && arrayEstadias[i].fechaEstadia.anio == 2021)
+				{
+					 indexByIdPerro(arrayPerro, tamP, arrayEstadias[i].idPerro, &iPerro);
+					 indexByIdDuenio(arrayDuenios, tamD, arrayEstadias[i], &iDuenio);
+					 cartelMostrarEstadiasLucias();
+					 mostrarUnidadEstadia(arrayEstadias[i], arrayPerro[iPerro], arrayDuenios[iDuenio]);
+				}
+			}
 		}
-	}
 
 }
 

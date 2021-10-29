@@ -165,7 +165,7 @@ int main(void)
 			  break;
 			case 11:
                 mostrarLuciasConSusEstadias(arrayEstadias, CANT_E, arrayDuenio, CANT_D, arrayPerros, CANT_P);
-                printf("\nESTADIAS DE LUCIA : ");
+                systemPause("\n »»»» Presione enter para continuar...");
 				break;
 			case 12:
 				break;
