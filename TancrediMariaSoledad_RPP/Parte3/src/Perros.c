@@ -183,9 +183,10 @@ int altaPerrito(Perro* arrayPerrito, int tam, int* id)
 			, TAM,1 ) == 0 && utn_nombreOapellido(bufferPerrito.raza, "\n --> INGRESE LA RAZA: ", "\n × ERROR Reingrese la raza.\n", TAM, 1) == 0
 			&& utn_getNumber(&bufferPerrito.edad, "\n --> INGRESE LA EDAD: ", "\n × ERROR Reingrese la edad.\n", 1,50, 1) == 0)
 		{
+			bufferPerrito.id = *id;
 			bufferPerrito.isEmpty = 1;
 			cartelVistaPreviaPerroIngresado();
-			mostrarUnidadPerro(arrayPerrito[i]);
+			mostrarUnidadPerro(bufferPerrito);
 			if(utn_getNumber(&rtaSeguir,"\n » DESEA CARGAR LOS DATOS ?"
 												"\n  [1] SI "
 												"\n  [2] NO ", "\n × ERROR.",1,2, 1) == 0)
