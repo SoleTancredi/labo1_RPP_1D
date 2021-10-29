@@ -172,7 +172,6 @@ int altaPerrito(Perro* arrayPerrito, int tam, int* id)
 {
 	int retorno = -1;
 	int i;
-	int indice;
 	int rtaSeguir;
 	Perro bufferPerrito;
 
@@ -185,9 +184,8 @@ int altaPerrito(Perro* arrayPerrito, int tam, int* id)
 			&& utn_getNumber(&bufferPerrito.edad, "\n --> INGRESE LA EDAD: ", "\n × ERROR Reingrese la edad.\n", 1,50, 1) == 0)
 		{
 			bufferPerrito.isEmpty = 1;
-			indexByIdPerro(arrayPerrito, tam,arrayPerrito[indice].id, &indice);
 			cartelVistaPreviaPerroIngresado();
-			mostrarUnidadPerro(arrayPerrito[indice]);
+			mostrarUnidadPerro(arrayPerrito[i]);
 			if(utn_getNumber(&rtaSeguir,"\n » DESEA CARGAR LOS DATOS ?"
 												"\n  [1] SI "
 												"\n  [2] NO ", "\n × ERROR.",1,2, 1) == 0)
