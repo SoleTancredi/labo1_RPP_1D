@@ -145,13 +145,17 @@ int main(void)
 		        systemPause("\n »»»» Presione enter para continuar...");
 				break;
 			case 10:
-				if(dueniosAlan(arrayEstadias, CANT_E, arrayDuenio, CANT_D) == 0)
+				if(flagReserva == 1 && contadorEstadias > 0)
 				{
-		        	printf("\n »» NO HAY DUENIOS INGRESADOS CON EL NOMBRE > ALAN <.");
-				}
-				else
-				{
-					printf("\n »»» CANTIDAD DE DUENIOS CON NOMBRE > ALAN <: [%d].",&cantidadDueniosAlan);
+					cantidadDueniosAlan = dueniosAlan(arrayEstadias, CANT_E, arrayDuenio, CANT_D);
+					if(cantidadDueniosAlan == 0)
+					{
+						printf("\n »» NO HAY DUENIOS INGRESADOS CON EL NOMBRE > ALAN <.");
+					}
+					else
+					{
+						printf("\n »»» CANTIDAD DE DUENIOS CON NOMBRE > ALAN <: [%d]",cantidadDueniosAlan);
+					}
 				}
 			  break;
 			case 11:

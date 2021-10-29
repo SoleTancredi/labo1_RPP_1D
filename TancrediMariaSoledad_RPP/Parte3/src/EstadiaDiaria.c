@@ -46,7 +46,7 @@ int menuEstadia()
 			"\N [12] FINALIZAR PROGRAMA.\n"
 			"\n --> INGRESE UNA OPCION DE LA LISTA:  "
 			, " × ERROR. REINGRESE LA OPCION.\n"
-			, 1, 9, 1) == 0)
+			, 1, 12, 1) == 0)
 	{
 		printf("\n »» Usted ha ingresado la opcion nº %d\n", option);
 	}
